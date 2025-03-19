@@ -1,0 +1,92 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/07 17:03:53 by qsomarri          #+#    #+#             */
+/*   Updated: 2025/03/19 19:30:33 by qsomarri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minirt.h"
+
+int	check_scene(char *str)
+{
+	char	buff;
+	int		fd;
+	size_t	count[3];
+
+	ft_bzero(count, sizeof(count));
+	fd = open(str, O_RDONLY);
+	if (fd < 0)
+		return (perror("open"), EXIT_FAILURE);
+	while (read(fd, &buff, 1))
+	{
+		if (buff == 'A')
+			count[0] += 1;
+		if (buff == 'C')
+			count[1] += 1;
+		if (buff == 'L')
+			count[2] += 1;
+	}
+	if (count[0] != 1)
+		return (close(fd), ft_putstr_fd(AMB_ERROR, 2), 1);
+	if (count[1] != 1)
+		return (close(fd), ft_putstr_fd(CAM_ERROR, 2), 1);
+	if (count[2] != 1)
+		return (close(fd), ft_putstr_fd(LIGHT_ERROR, 2), 1);
+	return (close(fd), EXIT_SUCCESS);
+}
+
+int	pars_line(t_minirt *data, char *str)
+{
+	char	**arr;
+	int		res;
+
+	if (str_is_white_space(str))
+		return (EXIT_SUCCESS);
+	arr = ft_split(str, ' ');
+	if (!arr)
+		return (perror("malloc"), EXIT_FAILURE);
+	if (ft_str_equal(*arr, "A"))
+		res = pars_ambient_light(data, arr);
+	if (ft_str_equal(*arr, "C"))
+		res = pars_camera(data, arr);
+	if (ft_str_equal(*arr, "L"))
+		res = pars_light(data, arr);
+	if (ft_str_equal(*arr, "sp"))
+		res = pars_sphere(data, arr);
+	if (ft_str_equal(*arr, "pl"))
+		res = pars_plane(data, arr);
+	if (ft_str_equal(*arr, "cy"))
+		res = pars_cylindre(data, arr);
+	else
+		return (ft_free_array(arr), ft_putstr_fd(SCENE_ERROR, 2), EXIT_FAILURE);
+	//print_scene(data);
+	return (res);
+}
+
+int	pars_file(t_minirt *data, char *str)
+{
+	int		fd;
+	char	*line;
+
+	if (check_scene(str))
+		return (EXIT_FAILURE);
+	fd = open(str, O_RDONLY);
+	if (fd < 0)
+		return (perror("open"), EXIT_FAILURE);
+	line = get_next_line(fd);
+	if (!line)
+		return (close(fd), EXIT_FAILURE);
+	while (line)
+	{
+		if (pars_line(data, line))
+			return (free(line), close(fd), EXIT_FAILURE);
+		free(line);
+		line = get_next_line(fd);
+	}
+	return (close(fd), EXIT_SUCCESS);
+}
