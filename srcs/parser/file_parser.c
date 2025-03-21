@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 17:03:53 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/21 13:02:05 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/21 19:15:40 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,19 +52,18 @@ static int	pars_line(t_minirt *data, char *str)
 		return (perror("malloc"), EXIT_FAILURE);
 	if (ft_str_equal(*arr, "A"))
 		res = pars_ambient_light(data, arr);
-	if (ft_str_equal(*arr, "C"))
+	else if (ft_str_equal(*arr, "C"))
 		res = pars_camera(data, arr);
-	if (ft_str_equal(*arr, "L"))
+	else if (ft_str_equal(*arr, "L"))
 		res = pars_light(data, arr);
-	if (ft_str_equal(*arr, "sp"))
+	else if (ft_str_equal(*arr, "sp"))
 		res = pars_sphere(data, arr);
-	if (ft_str_equal(*arr, "pl"))
+	else if (ft_str_equal(*arr, "pl"))
 		res = pars_plane(data, arr);
-	if (ft_str_equal(*arr, "cy"))
+	else if (ft_str_equal(*arr, "cy"))
 		res = pars_cylindre(data, arr);
 	else
 		return (ft_free_array(arr), ft_putstr_fd(SCENE_ERROR, 2), EXIT_FAILURE);
-	//print_scene(data);
 	return (res);
 }
 
@@ -88,5 +87,6 @@ int	pars_file(t_minirt *data, char *str)
 		free(line);
 		line = get_next_line(fd);
 	}
+	print_scene(data);
 	return (close(fd), EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 17:03:34 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/19 19:33:36 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/21 17:38:11 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ int	check_args(int argc, char **argv)
 
 int	init_minirt(t_minirt *data)
 {
-	data->objects = NULL;
-	data->scene = malloc(sizeof(t_scene));
-	if (!data->scene)
+	data->objects = ft_calloc(1, sizeof(t_list *));
+	if (!data->objects)
 		return (perror("malloc"), EXIT_FAILURE);
+	data->scene = ft_calloc(1, sizeof(t_scene));
+	if (!data->scene)
+		return (perror("malloc"), free_minirt(data), EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
@@ -44,5 +46,6 @@ int	main(int argc, char **argv)
 	if (pars_file(&data, argv[1]))
 		return (EXIT_FAILURE);
 	/*loop mlx...*/
+	free_minirt(&data);
 	return (EXIT_SUCCESS);
 }

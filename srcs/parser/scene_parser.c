@@ -18,7 +18,7 @@ int	pars_ambient_light(t_minirt *data, char **arr)
 
 	if (arr_size(arr) != 3)
 		return (ft_putstr_fd(AMB_FORMAT, 2), EXIT_FAILURE);
-	amb = malloc(sizeof(t_amb_light));
+	amb = ft_calloc(1, sizeof(t_amb_light));
 	if (!amb)
 		return (perror("malloc"), EXIT_FAILURE);
 	amb->ratio = ft_atof(arr[1]);
@@ -37,7 +37,7 @@ int	pars_camera(t_minirt *data, char **arr)
 
 	if (arr_size(arr) != 4)
 		return (ft_putstr_fd(CAM_FORMAT, 2), EXIT_FAILURE);
-	cam = malloc(sizeof(t_cam));
+	cam = ft_calloc(1, sizeof(t_cam));
 	if (!cam)
 		return (perror("malloc"), EXIT_FAILURE);
 	cam->p = get_point(arr[1]);
@@ -58,9 +58,9 @@ int	pars_light(t_minirt *data, char **arr)
 {
 	t_light	*light;
 
-	if (arr_size(arr) != 3)
+	if (arr_size(arr) != 4)
 		return (ft_putstr_fd(LIGHT_FORMAT, 2), EXIT_FAILURE);
-	light = malloc(sizeof(t_light));
+	light = ft_calloc(1, sizeof(t_light));
 	if (!light)
 		return (perror("malloc"), EXIT_FAILURE);
 	light->p = get_point(arr[1]);

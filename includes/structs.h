@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:00:10 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/21 13:28:07 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/21 19:29:25 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,30 @@ typedef struct s_scene
 	t_light		*light;	
 }		t_scene;
 
+typedef enum e_obj_id
+{
+	SPHERE,
+	PLANE,
+	CYLINDER
+}		t_obj_id;
+
+typedef union u_obj_union
+{
+	t_sphere	sp;
+	t_plane		pl;
+	t_cylinder	cy;
+}		t_obj_union;
+
+typedef struct s_objects
+{
+	t_obj_id		type;
+	t_obj_union	*obj;
+}		t_objects;
+
 typedef struct s_minirt
 {
 	t_scene	*scene;
 	t_list	**objects;
-	// t_space	*space;	
 }		t_minirt;
 
 #endif

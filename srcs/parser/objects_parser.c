@@ -6,40 +6,109 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:52:44 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/21 13:40:33 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/21 19:28:07 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-
-
 int	pars_sphere(t_minirt *data, char **arr)
 {
 	t_sphere	*sp;
-	t_list		*new;
 
 	if (arr_size(arr) != 4)
 		return (ft_putstr_fd(SP_FORMAT, 2), EXIT_FAILURE);
-	sp = malloc(sizeof(t_sphere));
+	sp = ft_calloc(1, sizeof(t_sphere));
 	if (!sp)
 		return (perror("malloc"), EXIT_FAILURE);
 	sp->diam = ft_atof(arr[2]);
 	if (sp->diam <= 0)
-		return (free(sp), ft_puttr_fd(DIAM_ERROR, 2), ft_putstr_fd("sphere\n", 2), EXIT_FAILURE);
+		return (free(sp), ft_putstr_fd(DIAM_ERROR, 2),
+			ft_putstr_fd("sphere\n", 2), EXIT_FAILURE);
 	sp->center = get_point(arr[1]);
 	if (!sp->center)
-		return (free(sp), ft_puttr_fd("sphere\n", 2), EXIT_FAILURE);
+		return (free(sp), ft_putstr_fd("sphere\n", 2), EXIT_FAILURE);
 	sp->color = get_color(arr[3]);
 	if (!sp->color)
-		return (free(sp->center), free(sp), ft_putstr_fd("sphere\n", 2), EXIT_FAILURE);
-	new = ft_lstnew(sp);
-	if (!new)
-		return (perror("malloc"), free(sp->center), free(sp->color), free(sp), EXIT_FAILURE);
-	ft_lstadd_back(data->objects, new);
+		return (free_sphere(sp), ft_putstr_fd("sphere\n", 2), 1);
+	if (add_node_object(data, sp, 0))
+		return (free_sphere(sp), EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
-int	pars_plane(t_minirt *data, char **arr);
+int	pars_plane(t_minirt *data, char **arr)
+{
+	t_plane	*pl;
 
-int	pars_cylindre(t_minirt *data, char **arr);
+	if (arr_size(arr) != 4)
+		return (ft_putstr_fd(PL_FORMAT, 2), EXIT_FAILURE);
+	pl = ft_calloc(1, sizeof(t_plane));
+	if (!pl)
+		return (perror("malloc"), EXIT_FAILURE);
+	pl->point = get_point(arr[1]);
+	if (!pl->point)
+		return (free(pl), ft_putstr_fd("plane\n", 2), EXIT_FAILURE);
+	pl->axis = get_vector(arr[2]);
+	if (!pl->axis)
+		return (free_plane(pl), ft_putstr_fd("plane\n", 2), EXIT_FAILURE);
+	pl->color = get_color(arr[3]);
+	if (!pl->color)
+		return (free_plane(pl), ft_putstr_fd("plane\n", 2), 1);
+	if (add_node_object(data, pl, 1))
+		return (free_plane(pl), EXIT_FAILURE);
+	return (EXIT_SUCCESS);
+}
+
+static int	pars_cylinder2(t_minirt *data, char **arr, t_cylinder *cy)
+{
+	cy->color = get_color(arr[5]);
+	if (!cy->color)
+		return (free_cylinder(cy), ft_putstr_fd("cylinder\n", 2), EXIT_FAILURE);
+	if (add_node_object(data, cy, 2))
+		return (free_cylinder(cy), EXIT_FAILURE);
+	return (EXIT_SUCCESS);
+}
+
+int	pars_cylindre(t_minirt *data, char **arr)
+{
+	t_cylinder	*cy;
+
+	if (arr_size(arr) != 6)
+		return (ft_putstr_fd(CY_FORMAT, 2), EXIT_FAILURE);
+	cy = ft_calloc(1, sizeof(t_cylinder));
+	if (!cy)
+		return (perror("malloc"), EXIT_FAILURE);
+	cy->diam = ft_atof(arr[3]);
+	if (cy->diam < 0.0)
+		return (free(cy), ft_putstr_fd(DIAM_ERROR, 2),
+			ft_putstr_fd("cylinder\n", 2), 1);
+	cy->height = ft_atof(arr[4]);
+	if (cy->height < 0.0)
+		return (free(cy), ft_putstr_fd(HEIGHT_ERROR, 2), 1);
+	cy->center = get_point(arr[1]);
+	if (!cy->center)
+		return (free_cylinder(cy), ft_putstr_fd("cylinder\n", 2), EXIT_FAILURE);
+	cy->axis = get_vector(arr[2]);
+	if (!cy->axis)
+		return (free_cylinder(cy), ft_putstr_fd("cylinder\n", 2), EXIT_FAILURE);
+	if (pars_cylinder2(data, arr, cy))
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
+}
+
+int	add_node_object(t_minirt *data, t_obj_union *obj, t_obj_id id)
+{
+	t_list *new;
+	t_objects	*obj_node;
+
+	obj_node = malloc(sizeof(t_objects));
+	if (!obj_node)
+		return (perror("malloc"), EXIT_FAILURE);
+	obj_node->obj = obj;
+	obj_node->type = id;
+	new = ft_lstnew(obj_node);
+	if (!new)
+		return (perror("malloc"), EXIT_FAILURE);
+	ft_lstadd_back(data->objects, new);
+	return (EXIT_SUCCESS);
+}

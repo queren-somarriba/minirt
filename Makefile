@@ -6,7 +6,7 @@
 #    By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/06 15:01:28 by qsomarri          #+#    #+#              #
-#    Updated: 2025/03/21 12:59:53 by qsomarri         ###   ########.fr        #
+#    Updated: 2025/03/21 17:44:25 by qsomarri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,13 +26,17 @@ PARSER_DIR = parser
 
 MAIN_DIR = main
 
+ERROR_DIR = error_mgmt
+
 SRCS =	$(SRCS_DIR)/$(MAIN_DIR)/minirt.c \
 	$(SRCS_DIR)/$(PARSER_DIR)/file_parser.c \
 	$(SRCS_DIR)/$(PARSER_DIR)/utils_parser.c \
 	$(SRCS_DIR)/$(PARSER_DIR)/objects_parser.c \
 	$(SRCS_DIR)/$(PARSER_DIR)/scene_parser.c \
 	$(SRCS_DIR)/$(PARSER_DIR)/ft_atof.c \
-	$(SRCS_DIR)/outputs.c \
+	$(SRCS_DIR)/$(ERROR_DIR)/outputs.c \
+	$(SRCS_DIR)/$(ERROR_DIR)/free_objects.c \
+	$(SRCS_DIR)/$(ERROR_DIR)/free_scene.c \
 
 OBJ_DIR = obj
 
