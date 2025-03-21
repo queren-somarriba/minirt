@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:54:06 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/19 19:29:49 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/21 13:03:39 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include "parser.h"
 
 /*UTILS*/
-double		ft_atof(const char *nptr);
+
 
 /*OUTPUTS*/
 int			print_scene(t_minirt *data);

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   file_parser.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 17:03:53 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/19 19:30:33 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/21 13:02:05 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	check_scene(char *str)
+static int	check_scene(char *str)
 {
 	char	buff;
 	int		fd;
@@ -40,7 +40,7 @@ int	check_scene(char *str)
 	return (close(fd), EXIT_SUCCESS);
 }
 
-int	pars_line(t_minirt *data, char *str)
+static int	pars_line(t_minirt *data, char *str)
 {
 	char	**arr;
 	int		res;

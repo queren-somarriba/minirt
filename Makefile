@@ -6,7 +6,7 @@
 #    By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/06 15:01:28 by qsomarri          #+#    #+#              #
-#    Updated: 2025/03/19 16:48:21 by qsomarri         ###   ########.fr        #
+#    Updated: 2025/03/21 12:59:53 by qsomarri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ PARSER_DIR = parser
 MAIN_DIR = main
 
 SRCS =	$(SRCS_DIR)/$(MAIN_DIR)/minirt.c \
-	$(SRCS_DIR)/$(PARSER_DIR)/parser.c \
+	$(SRCS_DIR)/$(PARSER_DIR)/file_parser.c \
 	$(SRCS_DIR)/$(PARSER_DIR)/utils_parser.c \
 	$(SRCS_DIR)/$(PARSER_DIR)/objects_parser.c \
 	$(SRCS_DIR)/$(PARSER_DIR)/scene_parser.c \

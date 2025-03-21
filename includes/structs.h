@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:00:10 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/19 18:43:57 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/21 13:28:07 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,25 +58,25 @@ typedef struct s_light
 
 typedef struct s_sphere
 {
-	t_point	center;
+	t_point	*center;
 	double	diam;
-	t_color	color;
+	t_color	*color;
 }		t_sphere;
 
 typedef struct s_plane
 {
-	t_point		point;
-	t_vector	axis;
-	t_color		color;
+	t_point		*point;
+	t_vector	*axis;
+	t_color		*color;
 }		t_plane;
 
 typedef struct s_cylinder
 {
-	t_point		center;
-	t_vector	axis;
+	t_point		*center;
+	t_vector	*axis;
 	double		diam;
 	double		height;
-	t_color		color;
+	t_color		*color;
 }		t_cylinder;
 
 typedef struct s_scene

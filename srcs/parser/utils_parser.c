@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 16:40:05 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/19 19:32:38 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/21 13:06:32 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ t_point	*get_point(char *str)
 	return (ft_free_arr(p_arr), p);
 }
 
-t_vector	*get_vectot(char *str)
+t_vector	*get_vector(char *str)
 {
 	char		*v_arr;
 	t_vector	*v;

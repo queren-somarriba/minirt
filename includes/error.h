@@ -16,6 +16,8 @@
 # define VECT_FORMAT "Error\nInvalid vector format : "
 # define FOV_ERROR "Error\nInvalid field of view angle\n"
 # define LIGHT_FORMAT "Error\nInvalid light format\n"
-# define BRIGHT_RATIO "Error\ninvalid light brightness ratio\n"
+# define BRIGHT_RATIO "Error\nInvalid light brightness ratio\n"
+# define SP_FORMAT "Error\nInvalid sphere format\n"
+# define DIAM_ERROR "Error\nInvalid diameter : "
 
 #endif
