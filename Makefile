@@ -30,7 +30,8 @@ SRCS =	$(SRCS_DIR)/$(MAIN_DIR)/minirt.c \
 	$(SRCS_DIR)/$(PARSER_DIR)/parser.c \
 	$(SRCS_DIR)/$(PARSER_DIR)/utils_parser.c \
 	$(SRCS_DIR)/$(PARSER_DIR)/objects_parser.c \
-	$(SRCS_DIR)/$(MAIN_DIR)/utils_minirt.c \
+	$(SRCS_DIR)/$(PARSER_DIR)/scene_parser.c \
+	$(SRCS_DIR)/$(PARSER_DIR)/ft_atof.c \
 	$(SRCS_DIR)/outputs.c \
 
 OBJ_DIR = obj
