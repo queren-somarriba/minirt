@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:35:30 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/21 17:15:01 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/24 18:13:36 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define ERROR_H
 
 # define FILE_ERROR "Error\nminiRT argument must be a .rt file\n"
-# define OPEN_ERROR "Error\n : miniRt cannot open this file\n"
+# define OPEN_ERROR " : miniRt cannot open this file\n"
 # define SCENE_ERROR "Error\nInvalid scene !\n"
 # define AMB_ERROR "Error\nScene must have one unique ambient light\n"
 # define CAM_ERROR "Error\nScene must have one unique camera\n"
@@ -55,5 +55,10 @@ void	free_light(t_light *light);
 void	free_scene(t_scene *scene);
 
 void	free_minirt(t_minirt *data);
+
+/*OUTPUTS*/
+void	printerr(char *str);
+
+void	printerr2(char *str1, char *str2);
 
 #endif

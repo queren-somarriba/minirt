@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:00:10 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/21 19:29:25 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/24 17:50:19 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,17 +93,10 @@ typedef enum e_obj_id
 	CYLINDER
 }		t_obj_id;
 
-typedef union u_obj_union
-{
-	t_sphere	sp;
-	t_plane		pl;
-	t_cylinder	cy;
-}		t_obj_union;
-
 typedef struct s_objects
 {
 	t_obj_id		type;
-	t_obj_union	*obj;
+	void			*obj;
 }		t_objects;
 
 typedef struct s_minirt

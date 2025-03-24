@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:54:06 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/21 15:35:54 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/24 17:15:56 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@
 
 /*OUTPUTS*/
 int			print_scene(t_minirt *data);
+
+int			print_objects(t_list **lst);
 
 #endif

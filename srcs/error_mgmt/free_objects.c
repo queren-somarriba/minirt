@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_ojects.c                                      :+:      :+:    :+:   */
+/*   free_objects.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 16:21:24 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/21 17:37:42 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/24 17:48:46 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,20 +81,27 @@ void	free_cylinder(t_cylinder *cy)
 
 void	free_objects_lst(t_list **lst)
 {
-	t_list	*node;
+	t_list		*node;
+	t_list		*tmp;
+	t_objects	*obj_node;
 
 	node = *lst;
 	while (node)
 	{
-		if (sizeof(node->content) == sizeof(t_sphere))
-			free_sphere((t_sphere *)node->content);
-		else if (sizeof(node->content) == sizeof(t_plane))
-			free_plane((t_plane *)node->content);
-		else if (sizeof(node->content) == sizeof(t_cylinder))
-			free_cylinder((t_cylinder *)node->content);
+		obj_node = (t_objects *)(node->content);
+		if (obj_node->type == 0)
+			free_sphere((t_sphere *)obj_node->obj);
+		else if (obj_node->type == 1)
+			free_plane((t_plane *)obj_node->obj);
+		else if (obj_node->type == 2)
+			free_cylinder((t_cylinder *)obj_node->obj);
 		else
 			printf("unfree node\n");
+		free(obj_node);
+		tmp = node;
 		node = node->next;
+		free(tmp);
 	}
+	free(lst);
 	lst = NULL;
 }

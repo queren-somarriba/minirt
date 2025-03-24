@@ -6,7 +6,7 @@
 #    By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/06 15:01:28 by qsomarri          #+#    #+#              #
-#    Updated: 2025/03/21 17:44:25 by qsomarri         ###   ########.fr        #
+#    Updated: 2025/03/24 17:35:26 by qsomarri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS = -Wall -Wextra -Werror -g -I./includes
 
 RM = @rm -rf
 
-MAKE = @make -C
+MAKE = @make -s -C
 
 SRCS_DIR = srcs
 

@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 16:40:05 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/21 17:57:36 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/24 19:09:50 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,12 @@ t_color	*get_color(char *str)
 	if (!c_arr)
 		return (free(color), perror("malloc"), color);
 	if (arr_size(c_arr) != 3)
-		return (free(color), ft_free_array(c_arr),
-			ft_putstr_fd(COLOR_FORMAT, 2), color);
+		return (ft_free_array(c_arr),
+			printerr(COLOR_FORMAT), color);
 	*color = (t_color){ft_atoi(c_arr[0]), ft_atoi(c_arr[1]), ft_atoi(c_arr[2])};
 	if (color->r < 0 || color->r > 255 || color->g < 0 || color->g > 255
 		|| color->b < 0 || color->b > 255)
-		return (free(color),ft_free_array(c_arr),
-			ft_putstr_fd(COLOR_RANGE, 2), NULL);
+		return (free(color), ft_free_array(c_arr), printerr(COLOR_RANGE), NULL);
 	return (ft_free_array(c_arr), color);
 }
 
@@ -69,8 +68,7 @@ t_point	*get_point(char *str)
 	if (!p_arr)
 		return (free(p), perror("malloc"), NULL);
 	if (arr_size(p_arr) != 3)
-		return (free(p), ft_free_array(p_arr),
-			ft_putstr_fd(POINT_FORMAT, 2), NULL);
+		return (free(p), ft_free_array(p_arr), printerr(POINT_FORMAT), NULL);
 	*p = (t_point){ft_atof(p_arr[0]), ft_atof(p_arr[1]), ft_atof(p_arr[2])};
 	return (ft_free_array(p_arr), p);
 }
@@ -87,10 +85,10 @@ t_vector	*get_vector(char *str)
 	if (!v_arr)
 		return (free(v), perror("malloc"), NULL);
 	if (arr_size(v_arr) != 3)
-		return (free(v), ft_free_array(v_arr), ft_putstr_fd(VECT_FORMAT, 2), NULL);
+		return (free(v), ft_free_array(v_arr), printerr(VECT_FORMAT), NULL);
 	*v = (t_vector){ft_atof(v_arr[0]), ft_atof(v_arr[1]), ft_atof(v_arr[2])};
 	if (v->x < -1.0 || v->x > 1.0 || v->y < -1.0 || v->y > 1.0
 		|| v->z < -1.0 || v->z > 1.0)
-		return (free(v), ft_free_array(v_arr), ft_putstr_fd(VECT_RANGE, 2), NULL);
+		return (free(v), ft_free_array(v_arr), printerr(VECT_RANGE), NULL);
 	return (ft_free_array(v_arr), v);
 }

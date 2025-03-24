@@ -6,7 +6,7 @@
 #    By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/27 14:37:31 by qsomarri          #+#    #+#              #
-#    Updated: 2025/03/17 15:38:59 by qsomarri         ###   ########.fr        #
+#    Updated: 2025/03/24 17:31:39 by qsomarri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,14 +81,14 @@ RM = @rm -f
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	$(LINKER) $(NAME) $?
+	@$(LINKER) $(NAME) $?
 	@ranlib $(NAME)
 
 clean :
-	$(RM) $(OBJS)
+	@$(RM) $(OBJS)
 
 fclean : clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re : fclean all
 
