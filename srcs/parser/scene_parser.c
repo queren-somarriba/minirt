@@ -16,7 +16,7 @@ int	pars_ambient_light(t_minirt *data, char **arr)
 {
 	t_amb_light	*amb;
 
-	if (arr_size(arr) != 3)
+	if (arr_size(arr) != 3 || check_nptr(arr))
 		return (printerr(AMB_FORMAT), EXIT_FAILURE);
 	amb = ft_calloc(1, sizeof(t_amb_light));
 	if (!amb)
@@ -35,7 +35,7 @@ int	pars_camera(t_minirt *data, char **arr)
 {
 	t_cam	*cam;
 
-	if (arr_size(arr) != 4)
+	if (arr_size(arr) != 4 || check_nptr(arr))
 		return (printerr(CAM_FORMAT), EXIT_FAILURE);
 	cam = ft_calloc(1, sizeof(t_cam));
 	if (!cam)
@@ -57,7 +57,7 @@ int	pars_light(t_minirt *data, char **arr)
 {
 	t_light	*light;
 
-	if (arr_size(arr) != 4)
+	if (arr_size(arr) != 3 || check_nptr(arr))
 		return (printerr(LIGHT_FORMAT), EXIT_FAILURE);
 	light = ft_calloc(1, sizeof(t_light));
 	if (!light)

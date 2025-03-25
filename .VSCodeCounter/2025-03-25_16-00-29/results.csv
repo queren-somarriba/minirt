@@ -1,0 +1,12 @@
+"filename", "language", "C", "comment", "blank", "total"
+"/home/qsomarri/Documents/github/minirt/srcs/error_mgmt/free_objects.c", "C", 90, 11, 7, 108
+"/home/qsomarri/Documents/github/minirt/srcs/error_mgmt/free_scene.c", "C", 69, 11, 7, 87
+"/home/qsomarri/Documents/github/minirt/srcs/error_mgmt/outputs.c", "C", 87, 12, 8, 107
+"/home/qsomarri/Documents/github/minirt/srcs/main/minirt.c", "C", 46, 11, 7, 64
+"/home/qsomarri/Documents/github/minirt/srcs/parser/elements_parser.c", "C", 53, 11, 8, 72
+"/home/qsomarri/Documents/github/minirt/srcs/parser/file_parser.c", "C", 75, 11, 8, 94
+"/home/qsomarri/Documents/github/minirt/srcs/parser/ft_atof.c", "C", 49, 11, 8, 68
+"/home/qsomarri/Documents/github/minirt/srcs/parser/objects_parser.c", "C", 91, 11, 11, 113
+"/home/qsomarri/Documents/github/minirt/srcs/parser/scene_parser.c", "C", 55, 11, 8, 74
+"/home/qsomarri/Documents/github/minirt/srcs/parser/utils_parser.c", "C", 39, 11, 8, 58
+"Total", "-", 654, 111, 80, 845

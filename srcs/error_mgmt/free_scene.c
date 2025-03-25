@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 16:39:17 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/21 17:32:47 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:35:40 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	free_scene(t_scene *scene)
 	}	
 }
 
-void	free_minirt(t_minirt *data)
+int	free_minirt(t_minirt *data)
 {
 	if (data)
 	{
@@ -82,5 +82,11 @@ void	free_minirt(t_minirt *data)
 			free_scene(data->scene);
 		if (data->objects)
 			free_objects_lst(data->objects);
+		if (data->win_ptr)
+			mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+		mlx_destroy_display(data->mlx_ptr);
+		if (data->mlx_ptr)
+			free(data->mlx_ptr);
 	}
+	exit(EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:52:44 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/24 18:08:37 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:15:17 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	pars_sphere(t_minirt *data, char **arr)
 {
 	t_sphere	*sp;
 
-	if (arr_size(arr) != 4)
+	if (arr_size(arr) != 4 || check_nptr(arr))
 		return (printerr(SP_FORMAT), EXIT_FAILURE);
 	sp = ft_calloc(1, sizeof(t_sphere));
 	if (!sp)
@@ -56,7 +56,7 @@ int	pars_plane(t_minirt *data, char **arr)
 {
 	t_plane	*pl;
 
-	if (arr_size(arr) != 4)
+	if (arr_size(arr) != 4 || check_nptr(arr))
 		return (printerr(PL_FORMAT), EXIT_FAILURE);
 	pl = ft_calloc(1, sizeof(t_plane));
 	if (!pl)
@@ -89,7 +89,7 @@ int	pars_cylindre(t_minirt *data, char **arr)
 {
 	t_cylinder	*cy;
 
-	if (arr_size(arr) != 6)
+	if (arr_size(arr) != 6 || check_nptr(arr))
 		return (printerr(CY_FORMAT), EXIT_FAILURE);
 	cy = ft_calloc(1, sizeof(t_cylinder));
 	if (!cy)

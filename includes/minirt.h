@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:54:06 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/24 17:15:56 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:08:30 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,17 @@
 # include <stdio.h>
 # include <string.h>
 # include <math.h>
+# include <../mlx_linux/mlx.h>
+# include <X11/keysym.h>
+# include <X11/X.h>
 # include "../libft/includes/libft.h"
 # include "structs.h"
 # include "error.h"
 # include "parser.h"
+# include "display.h"
 
+# define WIN_WIDTH 800
+# define WIN_HEIGHT 600
 /*UTILS*/
 
 /*OUTPUTS*/

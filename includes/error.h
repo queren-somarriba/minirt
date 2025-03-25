@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:35:30 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/24 18:13:36 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:10:22 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@
 # define PL_FORMAT "Error\nInvalid plane format\n"
 # define CY_FORMAT "Error\nInvalid cylinder format\n"
 # define HEIGHT_ERROR "Error\n Invalid height : cylinder\n" 
+# define MLX_INIT "Error\nmlx_init error\n"
+# define MLX_WIN "Error\nmlx_new_window error\n"
 
 /*FREE_OBJECTS*/
 void	free_sphere(t_sphere *sp);
@@ -54,7 +56,7 @@ void	free_light(t_light *light);
 
 void	free_scene(t_scene *scene);
 
-void	free_minirt(t_minirt *data);
+int		free_minirt(t_minirt *data);
 
 /*OUTPUTS*/
 void	printerr(char *str);
