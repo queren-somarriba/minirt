@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 19:23:40 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/26 19:25:04 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/26 19:43:57 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,27 @@ void	img_pix_put(t_img *img, int x, int y, int color)
 	}
 }
 
+int	scale(int x)
+{
+	if (x < 100)
+		return (0);
+	else if (x < 200)
+		return (1);
+	else if (x < 300)	
+		return (0);
+	else if (x < 400)
+		return (1);
+	else if (x < 500)
+		return (0);
+	else if (x < 600)
+		return (1);
+	else if (x < 700)
+		return (0);
+	else if (x < 800)
+		return (1);
+	return (0);
+}
+
 int	render_background(t_img *img, int color)
 {
 	int	i;
@@ -46,7 +67,9 @@ int	render_background(t_img *img, int color)
 		while (j < WIN_WIDTH)
 		{
 			color = (i * 255 / WIN_HEIGHT) << 8 | (j * 255 / WIN_WIDTH) << 0;
-			img_pix_put(img, j++, i, color);
+			if (scale(i) && scale(j))
+				img_pix_put(img, j, i, color);
+			j++;
 		}
 		i++;
 	}
