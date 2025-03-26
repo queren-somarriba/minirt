@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 16:39:17 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/25 17:35:40 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/26 19:12:13 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ int	free_minirt(t_minirt *data)
 			free_objects_lst(data->objects);
 		if (data->win_ptr)
 			mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+		if (data->img.mlx_img)
+			mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
 		mlx_destroy_display(data->mlx_ptr);
 		if (data->mlx_ptr)
 			free(data->mlx_ptr);

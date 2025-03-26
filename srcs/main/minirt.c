@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 17:03:34 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/25 18:08:19 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/26 19:23:05 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	init_minirt(t_minirt *data)
 	data->win_ptr = mlx_new_window(data->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, ":)");
 	if (!data->win_ptr)
 		return (free_minirt(data), printerr(MLX_WIN), EXIT_FAILURE);
+	data->img.mlx_img = NULL;
 	return (EXIT_SUCCESS);
 }
 
@@ -51,6 +52,9 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	if (pars_file(&data, argv[1]))
 		return (free_minirt(&data), EXIT_FAILURE);
+	data.img.mlx_img = mlx_new_image(data.mlx_ptr, WIN_WIDTH, WIN_HEIGHT);
+	data.img.addr = mlx_get_data_addr(data.img.mlx_img, &data.img.bpp,
+			&data.img.line_len, &data.img.endian);
 	// print_scene(&data);
 	// print_objects(data.objects);
 	mlx_loop_hook(data.mlx_ptr, &render, &data);
