@@ -6,7 +6,7 @@
 #    By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/06 15:01:28 by qsomarri          #+#    #+#              #
-#    Updated: 2025/03/25 18:03:17 by qsomarri         ###   ########.fr        #
+#    Updated: 2025/03/27 16:59:12 by qsomarri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,8 @@ ERROR_DIR = error_mgmt
 DISPLAY_DIR = display
 
 SRCS =	$(SRCS_DIR)/$(MAIN_DIR)/minirt.c \
+	$(SRCS_DIR)/$(MAIN_DIR)/vector_utils.c \
+	$(SRCS_DIR)/$(MAIN_DIR)/vector_utils2.c \
 	$(SRCS_DIR)/$(PARSER_DIR)/file_parser.c \
 	$(SRCS_DIR)/$(PARSER_DIR)/elements_parser.c \
 	$(SRCS_DIR)/$(PARSER_DIR)/utils_parser.c \

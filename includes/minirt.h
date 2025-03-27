@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:54:06 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/25 17:08:30 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:25:01 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include "error.h"
 # include "parser.h"
 # include "display.h"
+# include "vector.h"
 
 # define WIN_WIDTH 800
 # define WIN_HEIGHT 600

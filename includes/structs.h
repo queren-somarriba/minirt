@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:00:10 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/25 19:10:06 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/27 17:18:34 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ typedef struct s_vector
 	double	y;
 	double	z;
 }		t_vector;
+
+typedef struct s_ray
+{
+	t_point		p;
+	t_vector	v;
+}		t_ray;
+
 
 typedef struct s_color
 {

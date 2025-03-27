@@ -1,0 +1,209 @@
+
+📌 Algorithme du Ray Tracing détaillé
+1️⃣ Génération des Rayons (Ray Casting)
+
+Objectif : Calculer un rayon par pixel qui part de la caméra vers la scène.
+Définition d’un rayon
+
+Un rayon est défini par :
+
+    Origine : la position de la caméra.
+
+    Direction : un vecteur normalisé pointant vers un pixel de l’écran.
+
+Structure de base :
+
+typedef struct s_ray {
+    t_vector origin;
+    t_vector direction;
+} t_ray;
+
+Construction du rayon
+
+L'écran est une grille de pixels et chaque pixel doit avoir un rayon associé.
+
+    Définir un plan image 2D devant la caméra.
+
+    Convertir les coordonnées des pixels en coordonnées 3D.
+
+    Calculer le vecteur direction du rayon.
+
+Formule pour la direction du rayon :
+direction=pixel position−camera position
+direction=pixel position−camera position
+
+Puis normaliser ce vecteur.
+
+💡 Remarque : Pour une caméra orientable, il faut appliquer une matrice de rotation.
+2️⃣ Intersection Rayon-Objet
+
+Objectif : Trouver si un rayon touche un objet et à quelle distance.
+
+Chaque objet a une formule mathématique permettant de tester une intersection avec un rayon.
+🔵 Intersection avec une sphère
+
+Équation d’une sphère centrée en C(xc,yc,zc)C(xc​,yc​,zc​) de rayon RR :
+(x−xc)2+(y−yc)2+(z−zc)2=R2
+(x−xc​)2+(y−yc​)2+(z−zc​)2=R2
+
+En remplaçant x,y,zx,y,z par les coordonnées du rayon :
+O+tD
+O+tD
+
+On obtient une équation quadratique :
+at2+bt+c=0
+at2+bt+c=0
+
+Avec :
+
+    a=D⋅Da=D⋅D (produit scalaire de la direction du rayon)
+
+    b=2×(O−C)⋅Db=2×(O−C)⋅D
+
+    c=(O−C)⋅(O−C)−R2c=(O−C)⋅(O−C)−R2
+
+On résout avec le discriminant :
+Δ=b2−4ac
+Δ=b2−4ac
+
+    Si Δ<0Δ<0 → Pas d’intersection.
+
+    Si Δ=0Δ=0 → Une seule intersection.
+
+    Si Δ>0Δ>0 → Deux intersections (prendre la plus proche tt > 0).
+
+💡 Remarque : Pour d’autres objets (plans, cylindres), des formules similaires existent.
+3️⃣ Détermination de la Couleur du Pixel
+
+Objectif : Calculer l’illumination d’un point touché par un rayon.
+Lumière ambiante
+I=ka×Ia
+I=ka​×Ia​
+
+    IaIa​ : intensité de la lumière ambiante.
+
+    kaka​ : coefficient de réflexion ambiante (propre à l’objet).
+
+Lumière diffuse (Lambert)
+I=kd×Il×max⁡(0,N⋅L)
+I=kd​×Il​×max(0,N⋅L)
+
+    kdkd​ : coefficient de diffusion.
+
+    IlIl​ : intensité de la lumière.
+
+    NN : normale de la surface.
+
+    LL : direction de la lumière.
+
+    N⋅LN⋅L : produit scalaire (plus l’angle est petit, plus la lumière est forte).
+
+Lumière spéculaire (Phong)
+I=ks×Il×(max⁡(0,R⋅V))n
+I=ks​×Il​×(max(0,R⋅V))n
+
+    ksks​ : coefficient spéculaire.
+
+    RR : rayon réfléchi.
+
+    VV : direction de la caméra.
+
+    nn : facteur de brillance (plus il est élevé, plus le reflet est net).
+
+💡 Remarque : Somme de ces trois composantes donne la couleur finale.
+4️⃣ Gestion des Ombres
+
+Objectif : Vérifier si un point est éclairé ou dans l’ombre.
+
+    Lancer un rayon d’ombre depuis le point touché vers la lumière.
+
+    Si ce rayon rencontre un objet avant la lumière, le point est dans l’ombre.
+
+5️⃣ Gestion des Réflexions et Transparence (Bonus)
+Réflexions (Rayon rebondissant)
+
+Si un objet est réfléchissant, il faut calculer un nouveau rayon :
+R=D−2(D⋅N)N
+R=D−2(D⋅N)N
+
+    RR : direction du rayon réfléchi.
+
+    DD : direction du rayon incident.
+
+    NN : normale de la surface.
+
+Réfraction (Objets transparents)
+T=η1/η2×(D−(D⋅N)N)−N1−(η1/η2)2(1−(D⋅N)2)
+T=η1​/η2​×(D−(D⋅N)N)−N1−(η1​/η2​)2(1−(D⋅N)2)
+​
+
+    η1,η2η1​,η2​ : indices de réfraction des milieux.
+
+💡 Remarque : Ce sont des calculs lourds, à implémenter en bonus.
+🛠 Implémentation : Code de Base
+Créer et lancer un rayon
+
+t_ray generate_ray(t_camera *cam, int x, int y, int width, int height) {
+    t_ray ray;
+    float px = (2.0f * x / width - 1) * aspect_ratio;
+    float py = (1 - 2.0f * y / height);
+    
+    ray.origin = cam->position;
+    ray.direction = normalize(vector(px, py, -1));
+    return ray;
+}
+
+Intersection Rayon-Sphère
+
+int intersect_sphere(t_ray ray, t_sphere sphere, float *t) {
+    t_vector oc = subtract(ray.origin, sphere.center);
+    float a = dot(ray.direction, ray.direction);
+    float b = 2.0f * dot(oc, ray.direction);
+    float c = dot(oc, oc) - sphere.radius * sphere.radius;
+    float delta = b * b - 4 * a * c;
+
+    if (delta < 0)
+        return (0);
+    *t = (-b - sqrt(delta)) / (2.0 * a);
+    return (1);
+}
+
+📌 Plan de développement
+Étape	Description	Durée estimée
+🎯 Génération des rayons	Calcul des directions	1 jour
+🔵 Intersection sphère	Détection de collisions	2 jours
+💡 Lumières & Ombres	Modèle de Phong	3 jours
+🪞 Réflexions	Rayon rebondissant	2 jours (Bonus)
+🔮 Réfraction	Effet de verre	3 jours (Bonus)
+🚀 Conclusion
+
+Avec cette approche, tu peux avancer progressivement vers un rendu réaliste ! Commence simple (sphère + lumière) puis ajoute les ombres et effets avancés.
+
+Si tu veux plus de détails sur une partie, dis-moi ! 😃🔥
+
+
+#include "minirt.h"  // Fichier contenant les structures t_vector, t_ray, etc.
+#include <math.h>
+
+t_ray generate_ray(t_camera *cam, int x, int y, int width, int height) {
+    t_ray ray;
+    float aspect_ratio = (float)width / (float)height;
+    float scale = tan((cam->fov * 0.5) * (M_PI / 180.0));  // Conversion FOV en radians
+
+    // Transformation des coordonnées de pixel en espace 3D
+    float px = (2.0f * x / width - 1.0f) * aspect_ratio * scale;
+    float py = (1.0f - 2.0f * y / height) * scale;
+
+    // Calcul de la direction du rayon avec la base orthonormée de la caméra
+    t_vector direction = normalize(vector_add(
+        vector_add(vector_multiply(cam->right, px), 
+                   vector_multiply(cam->up, py)),
+        cam->forward
+    ));
+
+    // Construction du rayon
+    ray.origin = cam->position;
+    ray.direction = direction;
+
+    return ray;
+}
