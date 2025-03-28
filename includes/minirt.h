@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:54:06 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/27 16:25:01 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/28 18:08:25 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,13 @@
 
 # define WIN_WIDTH 800
 # define WIN_HEIGHT 600
-/*UTILS*/
 
+# ifndef M_PI
+#  define M_PI 3.14159265358979323846
+# endif
+
+/*UTILS*/
+void	ray_tracer(t_minirt *data);
 /*OUTPUTS*/
 int			print_scene(t_minirt *data);
 
