@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:54:06 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/28 18:08:25 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/31 16:30:05 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include "parser.h"
 # include "display.h"
 # include "vector.h"
+# include "intersections.h"
 
 # define WIN_WIDTH 800
 # define WIN_HEIGHT 600
@@ -39,8 +40,8 @@
 /*UTILS*/
 void	ray_tracer(t_minirt *data);
 /*OUTPUTS*/
-int			print_scene(t_minirt *data);
+int		print_scene(t_minirt *data);
 
-int			print_objects(t_list **lst);
+int		print_objects(t_list **lst);
 
 #endif

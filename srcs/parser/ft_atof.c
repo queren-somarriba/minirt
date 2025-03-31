@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_minirt.c                                     :+:      :+:    :+:   */
+/*   ft_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:01:24 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/17 18:07:40 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/31 14:51:53 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static const char	*handle_decimal(const char *nptr, double *res)
+static const char	*handle_decimal(const char *nptr, float *res)
 {
-	double	factor;
+	float	factor;
 
 	factor = 0.1;
 	nptr++;
@@ -43,9 +43,9 @@ static int	handle_e(const char *nptr)
 	return (i * sign);
 }
 
-double	ft_atof(const char *nptr)
+float	ft_atof(const char *nptr)
 {
-	double	res;
+	float	res;
 	int		e;
 	int		sign;
 

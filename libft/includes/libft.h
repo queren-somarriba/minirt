@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 15:05:01 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/13 16:30:12 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/31 14:52:03 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int			ft_atoi(const char *nptr);
 
 long		ft_atol(const char *nptr);
 
-double		ft_atof(const char *nptr);
+float		ft_atof(const char *nptr);
 
 void		*ft_calloc(size_t nmemb, size_t size);
 

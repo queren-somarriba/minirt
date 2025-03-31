@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:00:10 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/28 17:03:01 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/31 18:13:01 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@
 
 typedef struct s_point
 {
-	double	x;
-	double	y;
-	double	z;
+	float	x;
+	float	y;
+	float	z;
 }		t_point;
 
 typedef struct s_vector
 {
-	double	x;
-	double	y;
-	double	z;
+	float	x;
+	float	y;
+	float	z;
 }		t_vector;
 
 typedef struct s_ray
@@ -44,7 +44,7 @@ typedef struct s_color
 
 typedef struct s_amb_light
 {
-	double	ratio;
+	float	ratio;
 	t_color	*color;
 }		t_amb_light;
 
@@ -58,14 +58,14 @@ typedef struct s_cam
 typedef struct s_light
 {
 	t_point	*p;
-	double	brightness;
+	float	brightness;
 	//t_color	color;
 }		t_light;
 
 typedef struct s_sphere
 {
 	t_point	*center;
-	double	diam;
+	float	diam;
 	t_color	*color;
 }		t_sphere;
 
@@ -80,8 +80,8 @@ typedef struct s_cylinder
 {
 	t_point		*center;
 	t_vector	*axis;
-	double		diam;
-	double		height;
+	float		diam;
+	float		height;
 	t_color		*color;
 }		t_cylinder;
 
@@ -113,6 +113,13 @@ typedef struct s_img
 	int		line_len;
 	int		endian;
 }		t_img;
+
+typedef struct s_inter
+{
+	t_point	p;
+	t_color	c;
+	float	dist;
+}		t_inter;
 
 typedef struct s_minirt
 {

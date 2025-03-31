@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:36:09 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/25 13:48:15 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/31 14:50:34 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_vector	*get_vector(char *str);
 int			pars_file(t_minirt *data, char *str);
 
 /*FT_ATOF*/
-double		ft_atof(const char *nptr);
+float		ft_atof(const char *nptr);
 
 /*OBJECTS_PARSER*/
 int			pars_sphere(t_minirt *data, char **arr);

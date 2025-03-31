@@ -6,7 +6,7 @@
 #    By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/06 15:01:28 by qsomarri          #+#    #+#              #
-#    Updated: 2025/03/28 18:56:06 by qsomarri         ###   ########.fr        #
+#    Updated: 2025/03/31 16:39:19 by qsomarri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ ERROR_DIR = error_mgmt
 
 DISPLAY_DIR = display
 
-INTERECTIONS_DIR = intersections
+INTERSECTIONS_DIR = intersections
 
 SRCS =	$(SRCS_DIR)/$(MAIN_DIR)/minirt.c \
 	$(SRCS_DIR)/$(MAIN_DIR)/vector_utils.c \
@@ -47,6 +47,7 @@ SRCS =	$(SRCS_DIR)/$(MAIN_DIR)/minirt.c \
 	$(SRCS_DIR)/$(DISPLAY_DIR)/event.c \
 	$(SRCS_DIR)/$(DISPLAY_DIR)/display.c \
 	$(SRCS_DIR)/$(DISPLAY_DIR)/ray.c \
+	$(SRCS_DIR)/$(INTERSECTIONS_DIR)/intersections.c \
 	$(SRCS_DIR)/$(INTERSECTIONS_DIR)/sphere.c \
 	$(SRCS_DIR)/$(INTERSECTIONS_DIR)/plane.c \
 	$(SRCS_DIR)/$(INTERSECTIONS_DIR)/cylinder.c \

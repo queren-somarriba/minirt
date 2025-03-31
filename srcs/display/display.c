@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 19:23:40 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/27 13:24:06 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/03/31 18:15:12 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@ int	encode_rgb(t_color c)
 	return (c.r << 16 | c.g << 8 | c.b);
 }
 
-void	img_pix_put(t_img *img, int x, int y, int color)
+void	img_pix_put(t_img img, int x, int y, int color)
 {
 	char	*pixel;
 	int		i;
 
-	i = img->bpp - 8;
-	pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
+	i = img.bpp - 8;
+	pixel = img.addr + (y * img.line_len + x * (img.bpp / 8));
 	while (i >= 0)
 	{
-		if (img->endian)
+		if (img.endian)
 			*pixel++ = (color >> i) & 0xFF;
 		else
-			*pixel++ = (color >> (img->bpp - 8 - i)) & 0xFF;
+			*pixel++ = (color >> (img.bpp - 8 - i)) & 0xFF;
 		i -= 8;
 	}
 }
