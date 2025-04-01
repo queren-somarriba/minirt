@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 16:17:38 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/31 18:50:06 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/01 17:22:54 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	ray_tracer(t_minirt *data)
 	t_inter	*inter;
 
 	x = 0.0;
-	(void)data;
 	while (x < WIN_WIDTH)
 	{
 		y = 0.0;
