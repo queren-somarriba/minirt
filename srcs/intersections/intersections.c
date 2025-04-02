@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 17:14:42 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/01 19:35:44 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/02 20:02:24 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_inter	*closest_inter(t_minirt *data, t_ray ray)
 	if (!closest)
 		return (perror("malloc"), NULL);
 	closest->dist = INFINITY;
-	while (current->next)
+	while (current)
 	{
 		inter = find_inter(current, ray, inter);
 		if (inter && inter->dist < closest->dist)

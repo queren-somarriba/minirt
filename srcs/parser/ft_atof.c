@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:01:24 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/31 14:51:53 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/02 16:39:22 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ float	ft_atof(const char *nptr)
 	res = 0.0;
 	e = 0;
 	sign = 1;
+	if (ft_str_equal(nptr, "INFINITY"))
+		return (INFINITY);
 	if (*nptr == '-')
 		sign = -1;
 	if (*nptr == '-' || *nptr == '+')

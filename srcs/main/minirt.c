@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 17:03:34 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/31 17:11:45 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/02 18:54:12 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	check_args(int argc, char **argv)
 {
 	int	fd;
 
+	if (WIN_HEIGHT <= 0 || WIN_WIDTH <= 0)
+		return (printerr(WINDOW_ERROR), EXIT_FAILURE);
 	if (argc != 2 || !ft_str_equal(argv[1] + ft_strlen(argv[1]) - 3, ".rt"))
 		return (printerr(FILE_ERROR), EXIT_FAILURE);
 	fd = open(argv[1], O_RDONLY);

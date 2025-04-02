@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 16:19:32 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/31 14:51:43 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/02 17:49:15 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,10 @@ t_vector	normalize_vect(t_vector v)
 
 	a = vect_norm(v);
 	return ((t_vector){v.x / a, v.y / a, v.z / a});
+}
+
+t_vector	mult_vect(t_vector v1, t_vector v2)
+{
+	return ((t_vector){v1.y * v2.z - v2.y * v1.z,
+		v1.z * v2.x - v2.z * v1.x, v1.x * v2.y * v2.x * v1.y});
 }

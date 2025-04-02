@@ -6,13 +6,14 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:35:30 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/25 19:10:22 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/02 18:53:48 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ERROR_H
 # define ERROR_H
 
+# define WINDOW_ERROR "Error\nInvalid window size\n"
 # define FILE_ERROR "Error\nminiRT argument must be a .rt file\n"
 # define OPEN_ERROR " : miniRt cannot open this file\n"
 # define SCENE_ERROR "Error\nInvalid scene !\n"

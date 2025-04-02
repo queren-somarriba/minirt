@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 16:22:35 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/31 14:51:04 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/02 17:49:24 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ float		dot_product(t_vector v1, t_vector v2);
 
 /*VECTOR_UTILS 2*/
 t_vector	normalize_vect(t_vector v);
+
+t_vector	mult_vect(t_vector v1, t_vector v2);
 
 #endif
