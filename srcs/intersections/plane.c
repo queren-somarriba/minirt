@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 18:42:07 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/01 19:20:37 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/04 15:47:55 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ t_inter	*inter_plane(t_plane *pl, t_ray ray)
 		ray.p.y + v.y * res, ray.p.z + v.z * res};
 	intersection->c = *pl->color;
 	intersection->dist = res;
+	intersection->normal = *pl->axis;
 	return (intersection);
 }

@@ -6,16 +6,11 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 19:23:40 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/31 18:15:12 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/04 15:04:46 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-int	encode_rgb(t_color c)
-{
-	return (c.r << 16 | c.g << 8 | c.b);
-}
 
 void	img_pix_put(t_img img, int x, int y, int color)
 {

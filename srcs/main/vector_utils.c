@@ -6,13 +6,13 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 12:31:11 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/31 14:51:38 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/04 16:56:01 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-float	vect_norm(t_vector v)
+float	vect_lenght(t_vector v)
 {
 	return (sqrt(pow(v.x, 2.0) + pow(v.y, 2.0) + pow(v.z, 2.0)));
 }

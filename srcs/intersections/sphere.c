@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 18:41:52 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/02 17:19:37 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/04 15:50:52 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,7 @@ t_inter	*inter_sphere(t_sphere *sp, t_ray ray)
 		ray.p.y + v.y * res, ray.p.z + v.z * res};
 	intersection->c = *sp->color;
 	intersection->dist = res;
+	intersection->normal = (t_vector){intersection->p.x - sp->center->x,
+		intersection->p.y - sp->center->y, intersection->p.z - sp->center->z};
 	return (intersection);
 }

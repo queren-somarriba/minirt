@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:35:30 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/02 18:53:48 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/04 15:08:53 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ void	free_amb(t_amb_light *amb);
 void	free_cam(t_cam *cam);
 
 void	free_light(t_light *light);
-
-void	free_scene(t_scene *scene);
 
 int		free_minirt(t_minirt *data);
 

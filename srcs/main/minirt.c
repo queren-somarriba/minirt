@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 17:03:34 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/02 18:54:12 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/04 18:57:19 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@ int	init_minirt(t_minirt *data)
 	data->objects = ft_calloc(1, sizeof(t_list *));
 	if (!data->objects)
 		return (perror("malloc"), EXIT_FAILURE);
-	data->scene = ft_calloc(1, sizeof(t_scene));
-	if (!data->scene)
-		return (perror("malloc"), free_minirt(data), EXIT_FAILURE);
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 		return (free_minirt(data), printerr(MLX_INIT), EXIT_FAILURE);
@@ -41,6 +38,9 @@ int	init_minirt(t_minirt *data)
 	if (!data->win_ptr)
 		return (free_minirt(data), printerr(MLX_WIN), EXIT_FAILURE);
 	data->img.mlx_img = NULL;
+	data->amb = NULL;
+	data->cam = NULL;
+	data->light = NULL;
 	return (EXIT_SUCCESS);
 }
 

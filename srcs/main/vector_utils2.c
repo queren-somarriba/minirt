@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 16:19:32 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/02 17:49:15 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/04 16:58:32 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_vector	normalize_vect(t_vector v)
 {
 	float	a;
 
-	a = vect_norm(v);
+	a = vect_lenght(v);
 	return ((t_vector){v.x / a, v.y / a, v.z / a});
 }
 

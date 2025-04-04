@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_scene.c                                       :+:      :+:    :+:   */
+/*   free_data.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 16:39:17 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/26 19:12:13 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/04 15:09:34 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,16 @@ void	free_light(t_light *light)
 	}
 }
 
-void	free_scene(t_scene *scene)
+void	free_scene(t_minirt *data)
 {
-	if (scene)
+	if (data)
 	{
-		if (scene->amb)
-			free_amb(scene->amb);
-		if (scene->cam)
-			free_cam(scene->cam);
-		if (scene->light)
-			free_light(scene->light);
-		free(scene);
-		scene = NULL;
+		if (data->amb)
+			free_amb(data->amb);
+		if (data->cam)
+			free_cam(data->cam);
+		if (data->light)
+			free_light(data->light);
 	}	
 }
 
@@ -78,8 +76,8 @@ int	free_minirt(t_minirt *data)
 {
 	if (data)
 	{
-		if (data->scene)
-			free_scene(data->scene);
+		if (data)
+			free_scene(data);
 		if (data->objects)
 			free_objects_lst(data->objects);
 		if (data->win_ptr)

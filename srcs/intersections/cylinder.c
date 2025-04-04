@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 18:42:30 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/02 20:03:56 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/04 17:36:17 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_inter	*inter_cylinder(t_cylinder *cy, t_ray ray)
 	if (res < 0.0)
 		return (NULL);
 	intersection = malloc(sizeof(t_inter));
-	printf("res=%.1f\n", res);
+	//printf("res=%.1f\n", res);
 	if (!intersection)
 		return (perror("malloc"), NULL);
 	intersection->p = (t_point){ray.p.x + ray.v.x * res,

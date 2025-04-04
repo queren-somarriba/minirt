@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:52:15 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/24 18:03:53 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/04 15:18:24 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,28 +28,28 @@ void	printerr2(char *str1, char *str2)
 
 int	print_scene(t_minirt *data)
 {
-	if (data->scene)
+	if (data)
 	{
 		printf("SCENE:\n\n");
-		if (data->scene->amb)
+		if (data->amb)
 		{
-			printf("amb ratio=%.1f\n", data->scene->amb->ratio);
-			printf("amb color=[%d,%d,%d]\n", data->scene->amb->color->r,
-				data->scene->amb->color->g, data->scene->amb->color->b);
+			printf("amb ratio=%.1f\n", data->amb->ratio);
+			printf("amb color=[%d,%d,%d]\n", data->amb->color->r,
+				data->amb->color->g, data->amb->color->b);
 		}
-		if (data->scene->cam)
+		if (data->cam)
 		{
-			printf("cam fov=%d\n", data->scene->cam->fov);
-			printf("cam point=[%.1f,%.1f,%.1f]\n", data->scene->cam->p->x,
-				data->scene->cam->p->y, data->scene->cam->p->z);
-			printf("cam vector=[%.1f,%.1f,%.1f]\n", data->scene->cam->v->x,
-				data->scene->cam->v->y, data->scene->cam->v->z);
+			printf("cam fov=%d\n", data->cam->fov);
+			printf("cam point=[%.1f,%.1f,%.1f]\n", data->cam->p->x,
+				data->cam->p->y, data->cam->p->z);
+			printf("cam vector=[%.1f,%.1f,%.1f]\n", data->cam->v->x,
+				data->cam->v->y, data->cam->v->z);
 		}
-		if (data->scene->light)
+		if (data->light)
 		{
-			printf("light brightness=%.1f\n", data->scene->light->brightness);
-			printf("light point=[%.1f,%.1f,%.1f]\n\n", data->scene->light->p->x,
-				data->scene->light->p->y, data->scene->light->p->z);
+			printf("light brightness=%.1f\n", data->light->brightness);
+			printf("light point=[%.1f,%.1f,%.1f]\n\n", data->light->p->x,
+				data->light->p->y, data->light->p->z);
 		}
 	}
 	return (EXIT_SUCCESS);

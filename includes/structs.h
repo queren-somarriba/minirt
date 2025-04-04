@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:00:10 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/31 18:13:01 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/04 15:40:16 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,6 @@ typedef struct s_cylinder
 	t_color		*color;
 }		t_cylinder;
 
-typedef struct s_scene
-{
-	t_amb_light	*amb;
-	t_cam		*cam;
-	t_light		*light;	
-}		t_scene;
-
 typedef enum e_obj_id
 {
 	SPHERE,
@@ -119,11 +112,14 @@ typedef struct s_inter
 	t_point	p;
 	t_color	c;
 	float	dist;
+	t_vector	normal;
 }		t_inter;
 
 typedef struct s_minirt
 {
-	t_scene	*scene;
+	t_amb_light	*amb;
+	t_cam		*cam;
+	t_light		*light;	
 	t_list	**objects;
 	void	*mlx_ptr;
 	void	*win_ptr;
