@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 18:42:07 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/04 15:47:55 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/07 16:08:15 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,12 @@ t_inter	*inter_plane(t_plane *pl, t_ray ray)
 	t_vector	v;
 	float		res;
 
-	v = (t_vector){ray.p.x - pl->point->x, ray.p.y - pl->point->y,
-		ray.p.z - pl->point->z};
-	res = dot_product(*pl->axis, v) / dot_product(*pl->axis, ray.v);
+	v = (t_vector){pl->point->x - ray.p.x, pl->point->y - ray.p.y,
+		pl->point->z - ray.p.z};
+	res = dot_product(*pl->axis, ray.v);
+	if (fabsf(res) < 1e-6)
+		return (NULL);
+	res = -dot_product(*pl->axis, v) / dot_product(*pl->axis, ray.v);
 	if (res < 0.0)
 		return (NULL);
 	intersection = malloc(sizeof(t_inter));

@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 17:14:42 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/04 15:20:46 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/07 16:07:30 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,5 @@ t_inter	*closest_inter(t_minirt *data, t_ray ray)
 	}
 	if (closest && closest->dist && closest->dist == INFINITY)
 		return (free(closest), NULL);
-	//printf("dist=%.1f\n", closest->dist);
 	return (closest);
 }

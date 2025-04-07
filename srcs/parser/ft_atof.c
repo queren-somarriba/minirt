@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:01:24 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/02 16:39:22 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/07 15:32:56 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ float	ft_atof(const char *nptr)
 		nptr = handle_decimal(nptr, &res);
 	if (*nptr == 'e' || *nptr == 'E')
 		e = handle_e(nptr);
-	res *= pow(10, e);
+	res *= powf(10, e);
 	return (res * sign);
 }

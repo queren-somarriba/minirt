@@ -6,15 +6,15 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 12:31:11 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/04 16:56:01 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/07 15:32:50 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-float	vect_lenght(t_vector v)
+float	vect_length(t_vector v)
 {
-	return (sqrt(pow(v.x, 2.0) + pow(v.y, 2.0) + pow(v.z, 2.0)));
+	return (sqrtf(powf(v.x, 2.0) + powf(v.y, 2.0) + powf(v.z, 2.0)));
 }
 
 t_vector	add_vector(t_vector v1, t_vector v2)
@@ -22,12 +22,12 @@ t_vector	add_vector(t_vector v1, t_vector v2)
 	return ((t_vector){v1.x + v2.x, v1.y + v2.y, v1.z + v2.z});
 }
 
-t_vector	substract_vector(t_vector v1, t_vector v2)
+t_vector	sub_vector(t_vector v1, t_vector v2)
 {
 	return ((t_vector){v1.x - v2.x, v1.y - v2.y, v1.z - v2.z});
 }
 
-t_vector	scalar_mult(t_vector v, float x)
+t_vector	vector_scale(t_vector v, float x)
 {
 	return ((t_vector){x * v.x, x * v.y, x * v.z});
 }

@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:00:10 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/04 15:40:16 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/07 16:06:08 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ typedef struct s_light
 {
 	t_point	*p;
 	float	brightness;
-	//t_color	color;
 }		t_light;
 
 typedef struct s_sphere
@@ -109,9 +108,9 @@ typedef struct s_img
 
 typedef struct s_inter
 {
-	t_point	p;
-	t_color	c;
-	float	dist;
+	t_point		p;
+	t_color		c;
+	float		dist;
 	t_vector	normal;
 }		t_inter;
 
@@ -120,10 +119,10 @@ typedef struct s_minirt
 	t_amb_light	*amb;
 	t_cam		*cam;
 	t_light		*light;	
-	t_list	**objects;
-	void	*mlx_ptr;
-	void	*win_ptr;
-	t_img	img;
+	t_list		**objects;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	t_img		img;
 }		t_minirt;
 
 #endif

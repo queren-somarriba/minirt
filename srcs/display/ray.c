@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 16:17:38 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/04 18:18:45 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/07 16:11:37 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_vector	make_vect_dir(t_minirt *data, float x, float y)
 	max = WIN_HEIGHT;
 	if (WIN_WIDTH > WIN_HEIGHT)
 		max = WIN_WIDTH;
-	dist = max / (2 * tan((data->cam->fov * 0.5) * M_PI / 180.0));
+	dist = max / (2 * tanf((data->cam->fov * 0.5) * M_PI / 180.0));
 	v_dir = (t_vector){px, py, dist};
 	return (normalize_vect(v_dir));
 }
@@ -44,12 +44,10 @@ void	ray_tracer(t_minirt *data)
 		while (y < WIN_HEIGHT)
 		{
 			ray.p = *data->cam->p;
-			//printf("ray.p=(%.1f,%.1f,%.1f)\n", ray.p.x, ray.p.y, ray.p.z);
 			ray.v = make_vect_dir(data, x, y);
-			//printf("rav.v=(%.1f,%.1f,%.1f)\n", ray.v.x, ray.v.y, ray.v.z);
 			inter = closest_inter(data, ray);
 			if (inter)
-				inter->c = let_there_be_light(data, inter);
+				inter->c = final_color(data, inter);
 			if (inter)
 			{
 				img_pix_put(data->img, x, y, encode_rgb(inter->c));
