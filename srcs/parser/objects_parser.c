@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:52:44 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/25 15:15:17 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/07 18:10:02 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	add_node_object(t_minirt *data, void *obj, t_obj_id id)
 	return (EXIT_SUCCESS);
 }
 
-int	pars_sphere(t_minirt *data, char **arr)
+int	pars_sphere(t_minirt *data, char **arr, int index)
 {
 	t_sphere	*sp;
 
@@ -38,6 +38,7 @@ int	pars_sphere(t_minirt *data, char **arr)
 	sp = ft_calloc(1, sizeof(t_sphere));
 	if (!sp)
 		return (perror("malloc"), EXIT_FAILURE);
+	sp->index = index;
 	sp->diam = ft_atof(arr[2]);
 	if (sp->diam <= 0)
 		return (free(sp), printerr2(DIAM_ERROR, "sphere\n"), EXIT_FAILURE);
@@ -52,7 +53,7 @@ int	pars_sphere(t_minirt *data, char **arr)
 	return (EXIT_SUCCESS);
 }
 
-int	pars_plane(t_minirt *data, char **arr)
+int	pars_plane(t_minirt *data, char **arr, int index)
 {
 	t_plane	*pl;
 
@@ -61,6 +62,7 @@ int	pars_plane(t_minirt *data, char **arr)
 	pl = ft_calloc(1, sizeof(t_plane));
 	if (!pl)
 		return (perror("malloc"), EXIT_FAILURE);
+	pl->index = index;
 	pl->point = get_point(arr[1]);
 	if (!pl->point)
 		return (free(pl), printerr("plane\n"), EXIT_FAILURE);
@@ -85,7 +87,7 @@ static int	pars_cylinder2(t_minirt *data, char **arr, t_cylinder *cy)
 	return (EXIT_SUCCESS);
 }
 
-int	pars_cylindre(t_minirt *data, char **arr)
+int	pars_cylindre(t_minirt *data, char **arr, int index)
 {
 	t_cylinder	*cy;
 
@@ -94,6 +96,7 @@ int	pars_cylindre(t_minirt *data, char **arr)
 	cy = ft_calloc(1, sizeof(t_cylinder));
 	if (!cy)
 		return (perror("malloc"), EXIT_FAILURE);
+	cy->index = index;
 	cy->diam = ft_atof(arr[3]);
 	if (cy->diam < 0.0)
 		return (free(cy), printerr2(DIAM_ERROR, "cylinder\n"), 1);

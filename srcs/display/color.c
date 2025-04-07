@@ -6,11 +6,17 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 13:13:14 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/07 16:14:13 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/07 18:28:22 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+t_color	clamp_color(t_color c)
+{
+	return (t_color){ft_min(c.r, 255), ft_min(c.g, 255), ft_min(c.b, 255)};
+}
+    
 
 int	encode_rgb(t_color c)
 {
@@ -19,9 +25,9 @@ int	encode_rgb(t_color c)
 
 t_color	add_color(t_color c1, t_color c2, float c2_ratio)
 {
-	return ((t_color){(1 - c2_ratio) * c1.r + c2.r * c2_ratio,
+	return (clamp_color((t_color){(1 - c2_ratio) * c1.r + c2.r * c2_ratio,
 		(1 - c2_ratio) * c1.g + c2.g * c2_ratio,
-		(1 - c2_ratio) * c1.b + c2.b * c2_ratio});
+		(1 - c2_ratio) * c1.b + c2.b * c2_ratio}));
 }
 
 t_color	diffuse_reflexion(t_inter *inter, t_light *light, t_color color)
@@ -62,9 +68,23 @@ int	is_in_shadow(t_minirt *data, t_inter *inter, t_light *light)
 		inter->p.y + 0.001 * to_light.y, inter->p.z + 0.001 * to_light.z};
 	shadow_ray.v = to_light;
 	tmp = closest_inter(data, shadow_ray);
+	if (tmp && tmp->obj_index == inter->obj_index)
+		return (free(tmp), 0);
 	if (tmp && tmp->dist < dist)
 		return (free(tmp), 1);
 	return (free(tmp), 0);
+}
+
+t_color	final_color(t_minirt *data, t_inter *inter)
+{
+	t_color	final;
+
+	final = add_color(inter->c, *(data->amb->color), data->amb->ratio);
+	if (!is_in_shadow(data, inter, data->light))
+		final = diffuse_reflexion(inter, data->light, final);
+	else
+	 	final = add_color(final, (t_color){0, 0, 0}, 0.7);
+	return (clamp_color(final));
 }
 
 // bool	is_in_shadow(t_minirt *data, t_inter *inter, t_light *light)
@@ -83,18 +103,6 @@ int	is_in_shadow(t_minirt *data, t_inter *inter, t_light *light)
 // 		return (free(tmp), true);
 // 	return (free(tmp), false);
 // }
-
-t_color	final_color(t_minirt *data, t_inter *inter)
-{
-	t_color	final;
-
-	final = add_color(inter->c, *(data->amb->color), data->amb->ratio);
-	if (!is_in_shadow(data, inter, data->light))
-		final = diffuse_reflexion(inter, data->light, final);
-	else
-		final = add_color(final, (t_color){0, 0, 0}, 0);
-	return (final);
-}
 
 // t_color	let_there_be_light(t_minirt *data, t_inter *inter)
 // {

@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 17:14:42 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/07 16:07:30 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/07 16:57:43 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ static t_inter	*find_inter(t_list *node, t_ray ray, t_inter *inter)
 
 static t_inter	*free_and_assign(t_inter *inter, t_inter *new)
 {
-	free(inter);
+	if (inter)
+		free(inter);
 	inter = new;
 	return (inter);
 }
