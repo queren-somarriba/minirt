@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 18:42:30 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/07 18:02:22 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/09 16:10:50 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ t_inter	*inter_cylinder(t_cylinder *cy, t_ray ray)
 {
 	t_inter		*intersection;
 	t_vector	v;
-	t_vector 	intersection_point;
 	float		res;
 	float		dist;
 
@@ -54,10 +53,9 @@ t_inter	*inter_cylinder(t_cylinder *cy, t_ray ray)
 	res = quad_cylinder(cy, ray, v);
 	if (res < 0.0)
 		return (NULL);
-	intersection_point = (t_vector){ray.p.x + ray.v.x * res - cy->center->x,
+	dist = dot_product((t_vector){ray.p.x + ray.v.x * res - cy->center->x,
 			ray.p.y + ray.v.y * res - cy->center->y,
-			ray.p.z + ray.v.z * res - cy->center->z};
-	dist = dot_product(intersection_point, *cy->axis);
+			ray.p.z + ray.v.z * res - cy->center->z}, *cy->axis);
 	if (dist < -cy->height / 2 || dist > cy->height / 2)
 		return (NULL);
 	intersection = malloc(sizeof(t_inter));
@@ -68,6 +66,5 @@ t_inter	*inter_cylinder(t_cylinder *cy, t_ray ray)
 	intersection->c = *cy->color;
 	intersection->dist = res;
 	intersection->normal = normal_to_cylinder(cy, *intersection);
-	intersection->obj_index = cy->index;
 	return (intersection);
 }

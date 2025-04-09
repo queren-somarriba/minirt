@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 13:40:11 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/25 15:15:49 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/09 18:13:52 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ t_vector	*get_vector(char *str)
 	if (v->x < -1.0 || v->x > 1.0 || v->y < -1.0 || v->y > 1.0
 		|| v->z < -1.0 || v->z > 1.0)
 		return (free(v), ft_free_array(v_arr), printerr(VECT_RANGE), NULL);
+	*v = normalize_vect(*v);
 	return (ft_free_array(v_arr), v);
 }

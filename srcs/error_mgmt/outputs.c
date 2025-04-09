@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:52:15 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/04 15:18:24 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/09 18:02:37 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int	print_objects(t_list **lst)
 	node = *lst;
 	while (node)
 	{
-		printf("OBJECTS:\n\n");
 		if (((t_objects *)(node->content))->type == 0)
 		{
 			sp = ((t_sphere *)((t_objects *)node->content)->obj);

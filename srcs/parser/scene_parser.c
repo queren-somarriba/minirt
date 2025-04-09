@@ -28,6 +28,8 @@ int	pars_ambient_light(t_minirt *data, char **arr)
 	if (!amb->color)
 		return (free(amb), printerr("ambient light\n"), EXIT_FAILURE);
 	data->amb = amb;
+	if (add_node_object(data, amb, AMB))
+		return (free_amb(amb), EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
@@ -50,6 +52,8 @@ int	pars_camera(t_minirt *data, char **arr)
 	if (cam->fov < 0 || cam->fov > 180)
 		return (free(cam->p), free(cam->v), free(cam), printerr(FOV_ERROR), 1);
 	data->cam = cam;
+	if (add_node_object(data, cam, CAM))
+		return (free_cam(cam), EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
@@ -69,5 +73,7 @@ int	pars_light(t_minirt *data, char **arr)
 	if (light->brightness < 0.0 || light->brightness > 1.0)
 		return (free(light->p), free(light), printerr(BRIGHT_RATIO), 1);
 	data->light = light;
+	if (add_node_object(data, light, LIGHT))
+		return (free_light(light), EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

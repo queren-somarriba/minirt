@@ -59,25 +59,10 @@ void	free_light(t_light *light)
 	}
 }
 
-void	free_scene(t_minirt *data)
-{
-	if (data)
-	{
-		if (data->amb)
-			free_amb(data->amb);
-		if (data->cam)
-			free_cam(data->cam);
-		if (data->light)
-			free_light(data->light);
-	}	
-}
-
 int	free_minirt(t_minirt *data)
 {
 	if (data)
 	{
-		if (data)
-			free_scene(data);
 		if (data->objects)
 			free_objects_lst(data->objects);
 		if (data->win_ptr)

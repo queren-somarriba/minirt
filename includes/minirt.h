@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:54:06 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/02 18:51:50 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/09 18:04:03 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,12 @@
 #  define M_PI 3.14159265358979323846
 # endif
 
+/*LIST_UTILS*/
+void	move_on_objects(t_minirt *data, int keysysm);
+
 /*UTILS*/
 void	ray_tracer(t_minirt *data);
+
 /*OUTPUTS*/
 int		print_scene(t_minirt *data);
 

@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 16:21:24 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/03/24 17:48:46 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/09 16:25:58 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,22 @@ void	free_cylinder(t_cylinder *cy)
 	}
 }
 
+static void	free_obj(t_objects *obj_node)
+{
+	if (obj_node->type == AMB)
+		free_amb((t_amb_light *)obj_node->obj);
+	else if (obj_node->type == CAM)
+		free_cam((t_cam *)obj_node->obj);
+	else if (obj_node->type == LIGHT)
+		free_light((t_light *)obj_node->obj);
+	else if (obj_node->type == SPHERE)
+		free_sphere((t_sphere *)obj_node->obj);
+	else if (obj_node->type == PLANE)
+		free_plane((t_plane *)obj_node->obj);
+	else if (obj_node->type == CYLINDER)
+		free_cylinder((t_cylinder *)obj_node->obj);
+}
+
 void	free_objects_lst(t_list **lst)
 {
 	t_list		*node;
@@ -89,14 +105,7 @@ void	free_objects_lst(t_list **lst)
 	while (node)
 	{
 		obj_node = (t_objects *)(node->content);
-		if (obj_node->type == 0)
-			free_sphere((t_sphere *)obj_node->obj);
-		else if (obj_node->type == 1)
-			free_plane((t_plane *)obj_node->obj);
-		else if (obj_node->type == 2)
-			free_cylinder((t_cylinder *)obj_node->obj);
-		else
-			printf("unfree node\n");
+		free_obj(obj_node);
 		free(obj_node);
 		tmp = node;
 		node = node->next;

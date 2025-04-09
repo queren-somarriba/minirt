@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 17:12:15 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/07 16:06:25 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/09 16:25:34 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,14 @@
 
 # include "minirt.h"
 /*COLOR*/
+t_color	final_color(t_minirt *data, t_inter *inter);
+
+/*COLOR_UTILS*/
+t_color	clamp_color(t_color c);
+
 int		encode_rgb(t_color c);
 
-t_color	final_color(t_minirt *data, t_inter *inter);
+t_color	add_color(t_color c1, t_color c2, float c2_ratio);
 
 /*EVENT*/
 int		handle_no_event(void *data);

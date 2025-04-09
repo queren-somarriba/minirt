@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:52:44 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/07 18:10:02 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/09 16:31:00 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,22 @@ int	add_node_object(t_minirt *data, void *obj, t_obj_id id)
 {
 	t_list		*new;
 	t_objects	*obj_node;
+	t_list		*tmp;
+	int			index;
 
+	index = 0;
+	tmp = *data->objects;
+	while (tmp)
+	{
+		index++;
+		tmp = tmp->next;
+	}
 	obj_node = malloc(sizeof(t_objects));
 	if (!obj_node)
 		return (perror("malloc"), EXIT_FAILURE);
 	obj_node->obj = obj;
 	obj_node->type = id;
+	obj_node->index = index;
 	new = ft_lstnew(obj_node);
 	if (!new)
 		return (perror("malloc"), EXIT_FAILURE);
@@ -29,7 +39,7 @@ int	add_node_object(t_minirt *data, void *obj, t_obj_id id)
 	return (EXIT_SUCCESS);
 }
 
-int	pars_sphere(t_minirt *data, char **arr, int index)
+int	pars_sphere(t_minirt *data, char **arr)
 {
 	t_sphere	*sp;
 
@@ -38,7 +48,6 @@ int	pars_sphere(t_minirt *data, char **arr, int index)
 	sp = ft_calloc(1, sizeof(t_sphere));
 	if (!sp)
 		return (perror("malloc"), EXIT_FAILURE);
-	sp->index = index;
 	sp->diam = ft_atof(arr[2]);
 	if (sp->diam <= 0)
 		return (free(sp), printerr2(DIAM_ERROR, "sphere\n"), EXIT_FAILURE);
@@ -48,12 +57,12 @@ int	pars_sphere(t_minirt *data, char **arr, int index)
 	sp->color = get_color(arr[3]);
 	if (!sp->color)
 		return (free_sphere(sp), printerr("sphere\n"), 1);
-	if (add_node_object(data, sp, 0))
+	if (add_node_object(data, sp, SPHERE))
 		return (free_sphere(sp), EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
-int	pars_plane(t_minirt *data, char **arr, int index)
+int	pars_plane(t_minirt *data, char **arr)
 {
 	t_plane	*pl;
 
@@ -62,7 +71,6 @@ int	pars_plane(t_minirt *data, char **arr, int index)
 	pl = ft_calloc(1, sizeof(t_plane));
 	if (!pl)
 		return (perror("malloc"), EXIT_FAILURE);
-	pl->index = index;
 	pl->point = get_point(arr[1]);
 	if (!pl->point)
 		return (free(pl), printerr("plane\n"), EXIT_FAILURE);
@@ -72,7 +80,7 @@ int	pars_plane(t_minirt *data, char **arr, int index)
 	pl->color = get_color(arr[3]);
 	if (!pl->color)
 		return (free_plane(pl), printerr("plane\n"), 1);
-	if (add_node_object(data, pl, 1))
+	if (add_node_object(data, pl, PLANE))
 		return (free_plane(pl), EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
@@ -82,12 +90,12 @@ static int	pars_cylinder2(t_minirt *data, char **arr, t_cylinder *cy)
 	cy->color = get_color(arr[5]);
 	if (!cy->color)
 		return (free_cylinder(cy), printerr("cylinder\n"), EXIT_FAILURE);
-	if (add_node_object(data, cy, 2))
+	if (add_node_object(data, cy, CYLINDER))
 		return (free_cylinder(cy), EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
-int	pars_cylindre(t_minirt *data, char **arr, int index)
+int	pars_cylindre(t_minirt *data, char **arr)
 {
 	t_cylinder	*cy;
 
@@ -96,7 +104,6 @@ int	pars_cylindre(t_minirt *data, char **arr, int index)
 	cy = ft_calloc(1, sizeof(t_cylinder));
 	if (!cy)
 		return (perror("malloc"), EXIT_FAILURE);
-	cy->index = index;
 	cy->diam = ft_atof(arr[3]);
 	if (cy->diam < 0.0)
 		return (free(cy), printerr2(DIAM_ERROR, "cylinder\n"), 1);

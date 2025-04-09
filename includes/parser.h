@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:36:09 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/07 18:07:13 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/09 16:15:23 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,13 @@ int			pars_file(t_minirt *data, char *str);
 float		ft_atof(const char *nptr);
 
 /*OBJECTS_PARSER*/
-int			pars_sphere(t_minirt *data, char **arr, int index);
+int			pars_sphere(t_minirt *data, char **arr);
 
-int			pars_plane(t_minirt *data, char **arr, int index);
+int			pars_plane(t_minirt *data, char **arr);
 
-int			pars_cylindre(t_minirt *data, char **arr, int index);
+int			pars_cylindre(t_minirt *data, char **arr);
+
+int			add_node_object(t_minirt *data, void *obj, t_obj_id id);
 
 /*SCENE_PARSER*/
 int			pars_ambient_light(t_minirt *data, char **arr);

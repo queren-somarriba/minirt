@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:00:10 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/07 18:00:59 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/09 17:28:51 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ typedef struct s_sphere
 	t_point	*center;
 	float	diam;
 	t_color	*color;
-	int	index;
 }		t_sphere;
 
 typedef struct s_plane
@@ -74,7 +73,6 @@ typedef struct s_plane
 	t_point		*point;
 	t_vector	*axis;
 	t_color		*color;
-	int		index;
 }		t_plane;
 
 typedef struct s_cylinder
@@ -84,11 +82,13 @@ typedef struct s_cylinder
 	float		diam;
 	float		height;
 	t_color		*color;
-	int		index;
 }		t_cylinder;
 
 typedef enum e_obj_id
 {
+	AMB,
+	CAM,
+	LIGHT,
 	SPHERE,
 	PLANE,
 	CYLINDER
@@ -97,6 +97,7 @@ typedef enum e_obj_id
 typedef struct s_objects
 {
 	t_obj_id		type;
+	int				index;
 	void			*obj;
 }		t_objects;
 
@@ -115,7 +116,7 @@ typedef struct s_inter
 	t_color		c;
 	float		dist;
 	t_vector	normal;
-	int		obj_index;
+	int			obj_index;
 }		t_inter;
 
 typedef struct s_minirt
@@ -127,6 +128,7 @@ typedef struct s_minirt
 	void		*mlx_ptr;
 	void		*win_ptr;
 	t_img		img;
+	int		current_obj;
 }		t_minirt;
 
 #endif

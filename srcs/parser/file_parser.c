@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 17:03:53 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/07 18:08:09 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/09 16:00:25 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	check_scene(char *str)
 	return (close(fd), EXIT_SUCCESS);
 }
 
-static int	pars_line(t_minirt *data, char *str, int index)
+static int	pars_line(t_minirt *data, char *str)
 {
 	char	**arr;
 	int		res;
@@ -57,11 +57,11 @@ static int	pars_line(t_minirt *data, char *str, int index)
 	else if (ft_str_equal(*arr, "L"))
 		res = pars_light(data, arr);
 	else if (ft_str_equal(*arr, "sp"))
-		res = pars_sphere(data, arr, index);
+		res = pars_sphere(data, arr);
 	else if (ft_str_equal(*arr, "pl"))
-		res = pars_plane(data, arr, index);
+		res = pars_plane(data, arr);
 	else if (ft_str_equal(*arr, "cy"))
-		res = pars_cylindre(data, arr, index);
+		res = pars_cylindre(data, arr);
 	else
 		return (ft_free_array(arr), printerr(SCENE_ERROR), EXIT_FAILURE);
 	return (ft_free_array(arr), res);
@@ -71,11 +71,9 @@ int	pars_file(t_minirt *data, char *str)
 {
 	int		fd;
 	int		res;
-	int		index;
 	char	*line;
 
 	res = 0;
-	index = 0;
 	if (check_scene(str))
 		return (EXIT_FAILURE);
 	fd = open(str, O_RDONLY);
@@ -86,11 +84,10 @@ int	pars_file(t_minirt *data, char *str)
 		return (close(fd), EXIT_FAILURE);
 	while (line)
 	{
-		if (pars_line(data, line, index))
+		if (pars_line(data, line))
 			res = 1;
 		free(line);
 		line = get_next_line(fd);
-		index++;
 	}
 	return (close(fd), res);
 }

@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 17:03:34 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/04 18:57:19 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/09 17:29:04 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	init_minirt(t_minirt *data)
 	data->amb = NULL;
 	data->cam = NULL;
 	data->light = NULL;
+	data->current_obj = 0;
 	return (EXIT_SUCCESS);
 }
 
