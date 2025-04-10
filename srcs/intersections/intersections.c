@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 17:14:42 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/09 19:39:20 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/10 18:47:33 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,6 @@ t_inter	*closest_inter_shadow(t_minirt *data, t_ray ray, int index)
 				closest = free_and_assign(closest, inter);
 			else
 				inter = free_and_assign(inter, NULL);
-			if (closest && closest->obj_index)
-				printf("shadow/index=%d/%d\n", closest->obj_index, index);
 		}
 		current = current->next;
 	}

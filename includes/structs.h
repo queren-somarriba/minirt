@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:00:10 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/09 17:28:51 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/10 18:51:31 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 # define STRUCTS_H
 
 # include "minirt.h"
-
-typedef struct s_point
-{
-	float	x;
-	float	y;
-	float	z;
-}		t_point;
 
 typedef struct s_vector
 {
@@ -31,7 +24,7 @@ typedef struct s_vector
 
 typedef struct s_ray
 {
-	t_point		p;
+	t_vector	p;
 	t_vector	v;
 }		t_ray;
 
@@ -50,34 +43,34 @@ typedef struct s_amb_light
 
 typedef struct s_cam
 {
-	t_point		*p;
+	t_vector	*p;
 	t_vector	*v;
 	int			fov;
 }		t_cam;
 
 typedef struct s_light
 {
-	t_point	*p;
-	float	brightness;
+	t_vector	*p;
+	float		brightness;
 }		t_light;
 
 typedef struct s_sphere
 {
-	t_point	*center;
-	float	diam;
-	t_color	*color;
+	t_vector	*center;
+	float		diam;
+	t_color		*color;
 }		t_sphere;
 
 typedef struct s_plane
 {
-	t_point		*point;
+	t_vector	*point;
 	t_vector	*axis;
 	t_color		*color;
 }		t_plane;
 
 typedef struct s_cylinder
 {
-	t_point		*center;
+	t_vector	*center;
 	t_vector	*axis;
 	float		diam;
 	float		height;
@@ -112,7 +105,7 @@ typedef struct s_img
 
 typedef struct s_inter
 {
-	t_point		p;
+	t_vector	p;
 	t_color		c;
 	float		dist;
 	t_vector	normal;
@@ -128,7 +121,7 @@ typedef struct s_minirt
 	void		*mlx_ptr;
 	void		*win_ptr;
 	t_img		img;
-	int		current_obj;
+	int			current_obj;
 }		t_minirt;
 
 #endif

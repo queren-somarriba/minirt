@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 18:42:07 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/09 18:11:11 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/10 18:54:16 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,26 @@
 
 t_inter	*inter_plane(t_plane *pl, t_ray ray)
 {
-	t_inter		*intersection;
+	t_inter		*inter;
 	t_vector	v;
-	float		res;
+	float		t;
 
-	v = (t_vector){pl->point->x - ray.p.x, pl->point->y - ray.p.y,
-		pl->point->z - ray.p.z};
-	res = dot_product(*pl->axis, ray.v);
-	if (fabsf(res) < 1e-6)
+	v = sub_vector(*pl->point, ray.p);
+	t = dot_product(*pl->axis, ray.v);
+	if (fabsf(t) < 1e-6)
 		return (NULL);
-	res = -dot_product(*pl->axis, v) / dot_product(*pl->axis, ray.v);
-	if (res < 0.0)
+	t = dot_product(*pl->axis, v) / t;
+	if (t < 1e-6)
 		return (NULL);
-	intersection = malloc(sizeof(t_inter));
-	if (!intersection)
+	inter = malloc(sizeof(t_inter));
+	if (!inter)
 		return (perror("malloc"), NULL);
-	intersection->p = (t_point){ray.p.x + v.x * res,
-		ray.p.y + v.y * res, ray.p.z + v.z * res};
-	intersection->c = *pl->color;
-	intersection->dist = res;
-	intersection->normal = normalize_vect(*pl->axis);
-	return (intersection);
+	inter->p = add_vector(ray.p, vector_scale(ray.v, t));
+	inter->c = *pl->color;
+	inter->dist = t;
+	inter->normal = normalize_vect(*pl->axis);
+	inter->p = add_vector(inter->p, vector_scale(inter->normal, 1e-4));
+	if (dot_product(inter->normal, ray.v) > 0)
+		inter->normal = vector_scale(inter->normal, -1);
+	return (inter);
 }

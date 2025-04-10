@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 16:37:48 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/09 17:39:56 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/10 18:57:47 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ int	handle_input(int keysysm, t_minirt *data)
 		move_on_objects(data, keysysm);
 	if (keysysm == 65363 || keysysm == 65361 || keysysm == 65362
 		|| keysysm == 65364)
-		printf("diameter/height\n");//change diam/height
+		printf("diameter/height\n");
 	if (keysysm == XK_i || keysysm == XK_w || keysysm == XK_j
 		|| keysysm == XK_a || keysysm == XK_l || keysysm == XK_d)
-		printf("translate obj\n");//transaltion
+		printf("translate obj\n");
 	if (keysysm == XK_1 || keysysm == XK_2 || keysysm == XK_3)
-		printf("rotate obj\n");//rotation
+		printf("rotate obj\n");
 	return (EXIT_SUCCESS);
 }

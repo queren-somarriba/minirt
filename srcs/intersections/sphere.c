@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 18:41:52 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/09 16:10:57 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/10 18:55:30 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ float	quad(float a, float b, float c)
 	float	y;
 
 	delta = b * b - 4.0 * a * c;
-	if (delta < 0 || fabs(a) < 1e-6)
+	if (delta < 0 || fabsf(a) < 1e-6)
 		return (-1);
 	x = (-b - sqrtf(delta)) / (2.0 * a);
 	y = (-b + sqrtf(delta)) / (2.0 * a);
@@ -37,26 +37,21 @@ float	quad(float a, float b, float c)
 
 t_inter	*inter_sphere(t_sphere *sp, t_ray ray)
 {
-	t_inter		*intersection;
+	t_inter		*inter;
 	t_vector	v;
-	float		res;
+	float		t;
 
-	v = (t_vector){sp->center->x - ray.p.x,
-		sp->center->y - ray.p.y, sp->center->z - ray.p.z};
-	res = quad(dot_product(ray.v, ray.v), 2.0 * dot_product(v, ray.v),
+	v = sub_vector(ray.p, *sp->center);
+	t = quad(dot_product(ray.v, ray.v), 2.0 * dot_product(v, ray.v),
 			dot_product(v, v) - sp->diam * sp->diam / 4);
-	if (res < 0.0)
+	if (t < 0.0)
 		return (NULL);
-	intersection = malloc(sizeof(t_inter));
-	if (!intersection)
+	inter = malloc(sizeof(t_inter));
+	if (!inter)
 		return (perror("malloc"), NULL);
-	intersection->p = (t_point){ray.p.x + v.x * res,
-		ray.p.y + v.y * res, ray.p.z + v.z * res};
-	intersection->c = *sp->color;
-	intersection->dist = res;
-	intersection->normal = normalize_vect((t_vector){
-			intersection->p.x - sp->center->x,
-			intersection->p.y - sp->center->y,
-			intersection->p.z - sp->center->z});
-	return (intersection);
+	inter->p = add_vector(ray.p, vector_scale(ray.v, t));
+	inter->c = *sp->color;
+	inter->dist = t;
+	inter->normal = normalize_vect(sub_vector(inter->p, *sp->center));
+	return (inter);
 }

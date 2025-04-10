@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:54:06 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/09 18:04:03 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/10 18:25:53 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define WIN_HEIGHT 600
 
 # ifndef M_PI
-#  define M_PI 3.14159265358979323846
+#  define M_PI (float)3.14159265358979323846
 # endif
 
 /*LIST_UTILS*/

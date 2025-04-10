@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:36:09 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/09 16:15:23 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/10 18:51:56 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 t_color		*get_color(char *str);
 
-t_point		*get_point(char *str);
+t_vector	*get_point(char *str);
 
 t_vector	*get_vector(char *str);
 

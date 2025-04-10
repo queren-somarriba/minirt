@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 13:40:11 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/09 18:13:52 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/10 18:53:15 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ t_color	*get_color(char *str)
 	return (ft_free_array(c_arr), color);
 }
 
-t_point	*get_point(char *str)
+t_vector	*get_point(char *str)
 {
-	char	**p_arr;
-	t_point	*p;
+	char		**p_arr;
+	t_vector	*p;
 
-	p = ft_calloc(1, sizeof(t_point));
+	p = ft_calloc(1, sizeof(t_vector));
 	if (!p)
 		return (perror("malloc"), NULL);
 	p_arr = ft_split(str, ',');
@@ -46,7 +46,7 @@ t_point	*get_point(char *str)
 		return (free(p), perror("malloc"), NULL);
 	if (arr_size(p_arr) != 3)
 		return (free(p), ft_free_array(p_arr), printerr(POINT_FORMAT), NULL);
-	*p = (t_point){ft_atof(p_arr[0]), ft_atof(p_arr[1]), ft_atof(p_arr[2])};
+	*p = (t_vector){ft_atof(p_arr[0]), ft_atof(p_arr[1]), ft_atof(p_arr[2])};
 	return (ft_free_array(p_arr), p);
 }
 
