@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 17:30:16 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/10 18:56:35 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/11 16:28:34 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,18 @@ void	update_current_obj(t_minirt *data, int mode)
 
 void	move_on_objects(t_minirt *data, int keysysm)
 {
+	t_objects	*node;
+
 	if (keysysm == XK_n)
+	{
+		printf("Move to next object :\n");
 		update_current_obj(data, 0);
+	}
 	if (keysysm == XK_p)
+	{
+		printf("Move to previous object :\n");
 		update_current_obj(data, 1);
+	}
+	node = get_node(data, data->current_obj);
+	print_object(node);
 }
