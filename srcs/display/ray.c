@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 16:17:38 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/11 19:50:27 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/23 19:01:18 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	ray_tracer(t_minirt *data)
 		y = -1.0;
 		while (++y < WIN_HEIGHT)
 		{
+			img_pix_put(data->img, x, y, encode_rgb((t_color){0,0,0}));
 			ray.p = *data->cam->p;
 			ray.v = make_vect_dir(data, x, y);
 			inter = closest_inter(data, ray);

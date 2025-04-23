@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 16:37:48 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/11 19:16:37 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/23 18:42:50 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@ int	handle_no_event(void *data)
 	return (EXIT_SUCCESS);
 }
 
-int	handle_input(t_minirt *data, int keysysm)
+int	handle_input(int keysysm, void *param)
 {
+	t_minirt *data;
+
+	data = (t_minirt *)param;
 	//printf("Keycode: %d\n", keysysm);
 	if (keysysm == XK_Escape)
 		free_minirt(data);
@@ -34,5 +37,6 @@ int	handle_input(t_minirt *data, int keysysm)
 	else if (keysysm == XK_1 || keysysm == XK_2 || keysysm == XK_3
 		|| keysysm == XK_4 || keysysm == XK_5 || keysysm == XK_6)
 		rotation(data, keysysm);
+	ray_tracer(data);
 	return (EXIT_SUCCESS);
 }

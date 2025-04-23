@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 17:12:15 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/11 15:39:49 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/23 17:56:30 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_color	add_color(t_color c1, t_color c2, float c2_ratio);
 /*EVENT*/
 int		handle_no_event(void *data);
 
-int		handle_input(t_minirt *data, int keysysm);
+int		handle_input(int keysysm, void *param);
 
 int		close_window(t_minirt *data);
 
