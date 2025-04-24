@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:54:06 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/24 18:17:15 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/24 19:29:12 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@
 # include <X11/X.h>
 # include "../libft/includes/libft.h"
 # include "structs.h"
-# include "error.h"
+# include "error_and_free.h"
 # include "parser.h"
 # include "display.h"
-# include "vector.h"
+# include "ui.h"
 # include "intersections.h"
 
 # define WIN_WIDTH 800
@@ -42,17 +42,29 @@ void		move_on_objects(t_minirt *data, int keysysm);
 
 t_objects	*get_node(t_minirt *data, int index);
 
-/*UTILS*/
-void		ray_tracer(t_minirt *data);
-
 /*OUTPUTS*/
 int			print_object(t_objects *node);
 
-/*TRANSFORMATIONS*/
-int			resize(t_minirt *data, int keysysm);
+void		printerr(char *str);
 
-int			translation(t_minirt *data, int keysysm);
+void		printerr2(char *str1, char *str2);
 
-int			rotation(t_minirt *data, int keysysm);
+void		print_welcome_message(void);
+
+/*VECTOR_UTILS*/
+float		vect_length(t_vector v);
+
+t_vector	add_vector(t_vector v1, t_vector v2);
+
+t_vector	sub_vector(t_vector v1, t_vector v2);
+
+t_vector	vector_scale(t_vector v, float x);
+
+float		dot_product(t_vector v1, t_vector v2);
+
+/*VECTOR_UTILS 2*/
+t_vector	normalize_vect(t_vector v);
+
+t_vector	mult_vect(t_vector v1, t_vector v2);
 
 #endif

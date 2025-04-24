@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 17:03:34 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/24 13:06:18 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/24 19:32:53 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	init_minirt(t_minirt *data)
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 		return (free_minirt(data), printerr(MLX_INIT), EXIT_FAILURE);
-	data->win_ptr = mlx_new_window(data->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, ":)");
+	data->win_ptr = mlx_new_window(data->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "miniRT");
 	if (!data->win_ptr)
 		return (free_minirt(data), printerr(MLX_WIN), EXIT_FAILURE);
 	data->img.mlx_img = NULL;

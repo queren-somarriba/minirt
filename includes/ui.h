@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector.h                                           :+:      :+:    :+:   */
+/*   ui.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/27 16:22:35 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/07 13:47:24 by qsomarri         ###   ########.fr       */
+/*   Created: 2025/04/24 19:23:40 by qsomarri          #+#    #+#             */
+/*   Updated: 2025/04/24 19:29:43 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VECTOR_H
-# define VECTOR_H
+#ifndef UI_H
+# define UI_H
 
 # include "minirt.h"
 
-/*VECTOR_UTILS*/
-float		vect_length(t_vector v);
+/*EVENT*/
+int		handle_no_event(void *data);
 
-t_vector	add_vector(t_vector v1, t_vector v2);
+int		handle_escape(int keysysm, void *param);
 
-t_vector	sub_vector(t_vector v1, t_vector v2);
+int		handle_input(int keysysm, void *param);
 
-t_vector	vector_scale(t_vector v, float x);
+int		close_window(t_minirt *data);
 
-float		dot_product(t_vector v1, t_vector v2);
+/*RESIZE_AND_TRANSLATE*/
+int		resize(t_minirt *data, int keysysm);
 
-/*VECTOR_UTILS 2*/
-t_vector	normalize_vect(t_vector v);
+int		translation(t_minirt *data, int keysysm);
 
-t_vector	mult_vect(t_vector v1, t_vector v2);
+/*ROTATIONS*/
+
+int		rotation(t_minirt *data, int keysysm);
 
 #endif

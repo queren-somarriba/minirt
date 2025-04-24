@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 19:05:57 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/24 17:29:35 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/24 19:28:00 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_inter	*closest_inter_shadow(t_minirt *data, t_ray ray, int index);
 /*CYLINDER*/
 t_inter	*inter_cylinder(t_cylinder *cy, t_ray ray);
 
+/*CYLINDER CAPS*/
 t_inter	*inter_caps(t_cylinder *cy, t_ray ray);
 
 /*PLANE*/

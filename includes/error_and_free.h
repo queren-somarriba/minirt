@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   error_and_free.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:35:30 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/24 13:05:55 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/24 19:30:01 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#ifndef ERROR_AND_FREE_H
+# define ERROR_AND_FREE_H
 
 # define WINDOW_ERROR "Error\nInvalid window size\n"
 # define FILE_ERROR "Error\nminiRT argument must be a .rt file\n"
@@ -56,12 +56,5 @@ void	free_cam(t_cam *cam);
 void	free_light(t_light *light);
 
 int		free_minirt(t_minirt *data);
-
-/*OUTPUTS*/
-void	printerr(char *str);
-
-void	printerr2(char *str1, char *str2);
-
-void	print_welcome_message(void);
 
 #endif
