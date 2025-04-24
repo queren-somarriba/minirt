@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:54:06 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/24 15:04:10 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:17:15 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,5 @@ int			resize(t_minirt *data, int keysysm);
 int			translation(t_minirt *data, int keysysm);
 
 int			rotation(t_minirt *data, int keysysm);
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 16:17:38 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/24 15:09:44 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:19:54 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ t_vector	make_vect_dir(t_minirt *data, float x, float y)
 	f[3] = (1 - 2 * (y + 0.5) / WIN_HEIGHT) * f[1];
 	data->cam->forw = normalize_vect(*data->cam->v);
 	if (fabsf(data->cam->forw.x) == 0 && fabsf(data->cam->forw.z) == 0)
-	data->cam->right = (t_vector){1, 0, 0};
+		data->cam->right = (t_vector){1, 0, 0};
 	else
-	data->cam->right = normalize_vect(mult_vect((t_vector){0, 1, 0},
+		data->cam->right = normalize_vect(mult_vect((t_vector){0, 1, 0},
 					data->cam->forw));
 	data->cam->up = mult_vect(data->cam->forw, data->cam->right);
 	v_cam = add_vector(add_vector(vector_scale(data->cam->right, f[2]),

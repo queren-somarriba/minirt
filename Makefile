@@ -6,7 +6,7 @@
 #    By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/06 15:01:28 by qsomarri          #+#    #+#              #
-#    Updated: 2025/04/24 15:05:13 by qsomarri         ###   ########.fr        #
+#    Updated: 2025/04/24 17:29:01 by qsomarri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ SRCS =	$(SRCS_DIR)/$(MAIN_DIR)/minirt.c \
 	$(SRCS_DIR)/$(INTERSECTIONS_DIR)/sphere.c \
 	$(SRCS_DIR)/$(INTERSECTIONS_DIR)/plane.c \
 	$(SRCS_DIR)/$(INTERSECTIONS_DIR)/cylinder.c \
+	$(SRCS_DIR)/$(INTERSECTIONS_DIR)/cylinder_caps.c \
 
 OBJ_DIR = obj
 

@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:52:15 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/24 13:45:56 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:18:06 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_welcome_message(void)
 {
-	printf("\n                       🌟 Welcome to MiniRT 🌟\n");
+	printf("\n                       🌟 Welcome to miniRT 🌟\n");
 	printf("\n");
 	printf(" ➤ Press N to move to the next object\n");
 	printf(" ➤ Press P to move to the previous object\n");
