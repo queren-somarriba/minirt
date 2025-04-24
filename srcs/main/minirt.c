@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 17:03:34 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/23 18:51:18 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/24 13:06:18 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,14 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	if (pars_file(&data, argv[1]))
 		return (free_minirt(&data), EXIT_FAILURE);
+	print_welcome_message();
 	data.img.mlx_img = mlx_new_image(data.mlx_ptr, WIN_WIDTH, WIN_HEIGHT);
 	data.img.addr = mlx_get_data_addr(data.img.mlx_img, &data.img.bpp,
 			&data.img.line_len, &data.img.endian);
 	ray_tracer(&data);
 	mlx_loop_hook(data.mlx_ptr, &render, &data);
-	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_input, &data);
+	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_escape, &data);
+	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &handle_input, &data);
 	mlx_hook(data.win_ptr, DestroyNotify, 1L << 17, &free_minirt, &data);
 	mlx_loop(data.mlx_ptr);
 	return (EXIT_SUCCESS);

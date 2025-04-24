@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:54:06 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/11 19:18:29 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/24 15:04:10 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,5 @@ int			translation(t_minirt *data, int keysysm);
 
 int			rotation(t_minirt *data, int keysysm);
 
-void		rotate_x(t_vector *v, float angle);
-
-void		rotate_y(t_vector *v, float angle);
-
-void		rotate_z(t_vector *v, float angle);
 
 #endif

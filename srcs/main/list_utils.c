@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 17:30:16 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/23 19:00:18 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/24 13:39:29 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_objects	*get_node(t_minirt *data, int index)
 
 void	update_current_obj(t_minirt *data, int mode)
 {
-	int	len;
+	int		len;
 	t_list	*node;
 
 	node = ft_lstlast(*(data->objects));
@@ -35,7 +35,6 @@ void	update_current_obj(t_minirt *data, int mode)
 		data->current_obj = (data->current_obj + 1) % len;
 	if (mode == 1)
 		data->current_obj = (len + data->current_obj - 1) % len;
-	printf("current_obj=%d\n", data->current_obj);
 }
 
 void	move_on_objects(t_minirt *data, int keysysm)

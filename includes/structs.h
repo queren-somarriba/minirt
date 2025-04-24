@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:00:10 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/23 18:51:12 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/24 15:08:25 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ typedef struct s_cam
 {
 	t_vector	*p;
 	t_vector	*v;
+	t_vector	forw;
+	t_vector	right;
+	t_vector	up;
 	int			fov;
 }		t_cam;
 

@@ -6,7 +6,7 @@
 #    By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/06 15:01:28 by qsomarri          #+#    #+#              #
-#    Updated: 2025/04/11 19:13:50 by qsomarri         ###   ########.fr        #
+#    Updated: 2025/04/24 15:05:13 by qsomarri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,8 +34,8 @@ INTERSECTIONS_DIR = intersections
 
 SRCS =	$(SRCS_DIR)/$(MAIN_DIR)/minirt.c \
 	$(SRCS_DIR)/$(MAIN_DIR)/list_utils.c \
-	$(SRCS_DIR)/$(MAIN_DIR)/transformations.c \
-	$(SRCS_DIR)/$(MAIN_DIR)/transformations_utils.c \
+	$(SRCS_DIR)/$(MAIN_DIR)/resize_and_translate.c \
+	$(SRCS_DIR)/$(MAIN_DIR)/rotations.c \
 	$(SRCS_DIR)/$(MAIN_DIR)/vector_utils.c \
 	$(SRCS_DIR)/$(MAIN_DIR)/vector_utils2.c \
 	$(SRCS_DIR)/$(PARSER_DIR)/file_parser.c \

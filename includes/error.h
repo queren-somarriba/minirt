@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:35:30 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/04 15:08:53 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/24 13:05:55 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,7 @@ int		free_minirt(t_minirt *data);
 void	printerr(char *str);
 
 void	printerr2(char *str1, char *str2);
+
+void	print_welcome_message(void);
 
 #endif

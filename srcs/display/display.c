@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 19:23:40 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/23 18:58:38 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/24 13:40:38 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	render(t_minirt *data)
 {
 	if (!data->win_ptr)
 		return (1);
-	//clear_image(&data->img, WIN_WIDTH, WIN_HEIGHT);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 		data->img.mlx_img, 0, 0);
 	return (0);
