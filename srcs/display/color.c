@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 13:13:14 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/25 17:56:57 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/25 19:12:53 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ t_color	diffuse_reflexion(t_inter *i, t_light *l, t_color c, t_vector to_light)
 	(void)c;
 	to_light = normalize_vect(to_light);
 	x = dot_product(i->normal, to_light);
-	if (x < 0)
-		x = 0;
+	if (x < 0.0f)
+		x = 0.0f;
 	x *= l->brightness;
 	diffuse = clamp_color((t_color){i->c.r * x, i->c.g * x, i->c.b * x});
 	diffuse = clamp_color((t_color){c.r + diffuse.r,

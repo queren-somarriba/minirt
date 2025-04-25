@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 12:31:11 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/07 15:32:50 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/25 19:21:07 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 float	vect_length(t_vector v)
 {
-	return (sqrtf(powf(v.x, 2.0) + powf(v.y, 2.0) + powf(v.z, 2.0)));
+	return (sqrtf(powf(v.x, 2.0f) + powf(v.y, 2.0f) + powf(v.z, 2.0f)));
 }
 
 t_vector	add_vector(t_vector v1, t_vector v2)

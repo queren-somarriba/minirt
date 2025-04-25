@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 13:40:11 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/25 15:08:05 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/25 19:20:36 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ t_vector	*get_vector(char *str, int count)
 		return (free(v), ft_free_array(v_arr),
 			printerr_line(count, VECT_FORMAT), NULL);
 	*v = (t_vector){ft_atof(v_arr[0]), ft_atof(v_arr[1]), ft_atof(v_arr[2])};
-	if (v->x < -1.0 || v->x > 1.0 || v->y < -1.0 || v->y > 1.0
-		|| v->z < -1.0 || v->z > 1.0)
+	if (v->x < -1.0f || v->x > 1.0f || v->y < -1.0f || v->y > 1.0f
+		|| v->z < -1.0f || v->z > 1.0f)
 		return (free(v), ft_free_array(v_arr),
 			printerr_line(count, VECT_RANGE), NULL);
 	*v = normalize_vect(*v);

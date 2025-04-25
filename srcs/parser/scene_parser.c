@@ -22,7 +22,7 @@ int	pars_ambient_light(t_minirt *data, char **arr, int count)
 	if (!amb)
 		return (perror("malloc"), EXIT_FAILURE);
 	amb->ratio = ft_atof(arr[1]);
-	if (amb->ratio < 0.0 || amb->ratio > 1.0)
+	if (amb->ratio < 0.0f || amb->ratio > 1.0f)
 		return (free(amb), printerr_line(count, AMB_RATIO), EXIT_FAILURE);
 	amb->color = get_color(arr[2], count);
 	if (!amb->color)
@@ -70,7 +70,7 @@ int	pars_light(t_minirt *data, char **arr, int count)
 	if (!light->p)
 		return (free(light), EXIT_FAILURE);
 	light->brightness = ft_atof(arr[2]);
-	if (light->brightness < 0.0 || light->brightness > 1.0)
+	if (light->brightness < 0.0f || light->brightness > 1.0f)
 		return (free(light->p), free(light),
 			printerr_line(count, BRIGHT_RATIO), EXIT_FAILURE);
 	data->light = light;

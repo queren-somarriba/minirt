@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 17:00:15 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/24 18:08:10 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/25 19:24:34 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ t_inter	*check_cap2(t_cylinder *cy, t_inter *inter, t_inter *inter2, t_vector c)
 
 	dist = vect_length(sub_vector(inter->p, *cy->center));
 	dist2 = vect_length(sub_vector(inter2->p, c));
-	if (dist > cy->diam / 2 && dist2 > cy->diam / 2)
+	if (dist > cy->diam / 2.0f && dist2 > cy->diam / 2.0f)
 		return (free(inter), free(inter2), NULL);
-	if (dist > cy->diam / 2 || dist2 > cy->diam / 2)
+	if (dist > cy->diam / 2.0f || dist2 > cy->diam / 2.0f)
 	{
-		if (dist > cy->diam / 2)
+		if (dist > cy->diam / 2.0f)
 			return (free(inter), inter2);
 		return (free(inter2), inter);
 	}
@@ -45,9 +45,9 @@ t_inter	*check_cap(t_cylinder *cy, t_inter *inter, t_inter *inter2, t_vector c)
 		return (NULL);
 	else if (!inter || !inter2)
 	{
-		if (inter && dist < cy->diam / 2)
+		if (inter && dist < cy->diam / 2.0f)
 			return (inter);
-		else if (inter2 && dist2 < cy->diam / 2)
+		else if (inter2 && dist2 < cy->diam / 2.0f)
 			return (inter2);
 		if (inter)
 			free(inter);
