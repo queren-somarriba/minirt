@@ -20,4 +20,4 @@ Le but est d’implémenter un moteur de rendu simple en utilisant la technique 
 - Modification du diametre pour une sphere et diametre et hauteure pour un cylindre.
 - Translation et rotation d'une lumiere ponctuelle, de la camera, des spheres, des plans et des cylindres.!
 
-[alt text](<Screenshot from 2025-04-25 16-34-05.png>)
+![Screenshot from 2025-04-25 16-34-05](https://github.com/user-attachments/assets/92a7eeba-3021-4a2c-8614-1125b329f84f)
