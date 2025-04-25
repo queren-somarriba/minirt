@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:35:30 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/24 19:30:01 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/25 15:53:30 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,28 @@
 # define WINDOW_ERROR "Error\nInvalid window size\n"
 # define FILE_ERROR "Error\nminiRT argument must be a .rt file\n"
 # define OPEN_ERROR " : miniRt cannot open this file\n"
-# define SCENE_ERROR "Error\nInvalid scene !\n"
+# define SCENE_ERROR " : Invalid scene\n"
 # define AMB_ERROR "Error\nScene must have one unique ambient light\n"
 # define CAM_ERROR "Error\nScene must have one unique camera\n"
 # define LIGHT_ERROR "Error\nScene must have one unique light\n"
-# define AMB_FORMAT "Error\nInvalid ambient light format\n"
-# define AMB_RATIO "Error\nInvalid ambient light ratio\n"
-# define COLOR_FORMAT "Error\nInvalid color format : "
-# define COLOR_RANGE "Error\nInvalid color range : "
-# define CAM_FORMAT "Error\nInvalid camera format\n"
-# define POINT_FORMAT "Error\nInvalid point format : "
-# define VECT_FORMAT "Error\nInvalid vector format : "
-# define VECT_RANGE "Error\nInvalid vector range : "
-# define FOV_ERROR "Error\nInvalid field of view angle\n"
-# define LIGHT_FORMAT "Error\nInvalid light format\n"
-# define BRIGHT_RATIO "Error\nInvalid light brightness ratio\n"
-# define SP_FORMAT "Error\nInvalid sphere format\n"
-# define DIAM_ERROR "Error\nInvalid diameter : "
-# define PL_FORMAT "Error\nInvalid plane format\n"
-# define CY_FORMAT "Error\nInvalid cylinder format\n"
-# define HEIGHT_ERROR "Error\n Invalid height : cylinder\n" 
 # define MLX_INIT "Error\nmlx_init error\n"
 # define MLX_WIN "Error\nmlx_new_window error\n"
+# define AMB_FORMAT " : Invalid ambient light format\n"
+# define AMB_RATIO " : Invalid ambient light ratio\n"
+# define COLOR_FORMAT " : Invalid color format\n"
+# define COLOR_RANGE " : Invalid color range\n"
+# define CAM_FORMAT " : Invalid camera format\n"
+# define POINT_FORMAT " : Invalid point format\n"
+# define VECT_FORMAT " : Invalid vector format\n"
+# define VECT_RANGE " : Invalid vector range\n"
+# define FOV_ERROR " : Invalid field of view angle\n"
+# define LIGHT_FORMAT " : Invalid light format\n"
+# define BRIGHT_RATIO " : Invalid light brightness ratio\n"
+# define SP_FORMAT " : Invalid sphere format\n"
+# define DIAM_ERROR " : Invalid diameter\n"
+# define PL_FORMAT " : Invalid plane format\n"
+# define CY_FORMAT " : Invalid cylinder format\n"
+# define HEIGHT_ERROR " : Invalid height\n" 
 
 /*FREE_OBJECTS*/
 void	free_sphere(t_sphere *sp);

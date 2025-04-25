@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 13:13:14 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/10 19:01:46 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/25 17:56:57 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ t_color	diffuse_reflexion(t_inter *i, t_light *l, t_color c, t_vector to_light)
 	t_color		diffuse;
 	float		x;
 
+	(void)c;
 	to_light = normalize_vect(to_light);
 	x = dot_product(i->normal, to_light);
 	if (x < 0)

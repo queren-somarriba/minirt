@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 16:37:48 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/24 13:41:16 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/25 16:08:56 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	handle_input(int keysysm, void *param)
 
 	data = (t_minirt *)param;
 	if (keysysm == XK_n || keysysm == XK_p)
-		move_on_objects(data, keysysm);
+		return (move_on_objects(data, keysysm), EXIT_SUCCESS);
 	else if (keysysm == XK_Up || keysysm == XK_Down || keysysm == XK_Right
 		|| keysysm == XK_Left)
 		resize(data, keysysm);
@@ -44,6 +44,5 @@ int	handle_input(int keysysm, void *param)
 	else if (keysysm == XK_1 || keysysm == XK_2 || keysysm == XK_3
 		|| keysysm == XK_4 || keysysm == XK_5 || keysysm == XK_6)
 		rotation(data, keysysm);
-	ray_tracer(data);
 	return (EXIT_SUCCESS);
 }

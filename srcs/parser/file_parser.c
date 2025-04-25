@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 17:03:53 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/09 16:00:25 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/25 15:07:35 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	check_scene(char *str)
 	return (close(fd), EXIT_SUCCESS);
 }
 
-static int	pars_line(t_minirt *data, char *str)
+static int	pars_line(t_minirt *data, char *str, int count)
 {
 	char	**arr;
 	int		res;
@@ -51,19 +51,19 @@ static int	pars_line(t_minirt *data, char *str)
 	if (!arr)
 		return (perror("malloc"), EXIT_FAILURE);
 	if (ft_str_equal(*arr, "A"))
-		res = pars_ambient_light(data, arr);
+		res = pars_ambient_light(data, arr, count);
 	else if (ft_str_equal(*arr, "C"))
-		res = pars_camera(data, arr);
+		res = pars_camera(data, arr, count);
 	else if (ft_str_equal(*arr, "L"))
-		res = pars_light(data, arr);
+		res = pars_light(data, arr, count);
 	else if (ft_str_equal(*arr, "sp"))
-		res = pars_sphere(data, arr);
+		res = pars_sphere(data, arr, count);
 	else if (ft_str_equal(*arr, "pl"))
-		res = pars_plane(data, arr);
+		res = pars_plane(data, arr, count);
 	else if (ft_str_equal(*arr, "cy"))
-		res = pars_cylindre(data, arr);
+		res = pars_cylindre(data, arr, count);
 	else
-		return (ft_free_array(arr), printerr(SCENE_ERROR), EXIT_FAILURE);
+		return (ft_free_array(arr), printerr_line(count, SCENE_ERROR), 1);
 	return (ft_free_array(arr), res);
 }
 
@@ -71,9 +71,11 @@ int	pars_file(t_minirt *data, char *str)
 {
 	int		fd;
 	int		res;
+	int		count_lines;
 	char	*line;
 
 	res = 0;
+	count_lines = 1;
 	if (check_scene(str))
 		return (EXIT_FAILURE);
 	fd = open(str, O_RDONLY);
@@ -84,10 +86,11 @@ int	pars_file(t_minirt *data, char *str)
 		return (close(fd), EXIT_FAILURE);
 	while (line)
 	{
-		if (pars_line(data, line))
+		if (pars_line(data, line, count_lines))
 			res = 1;
 		free(line);
 		line = get_next_line(fd);
+		count_lines++;
 	}
 	return (close(fd), res);
 }

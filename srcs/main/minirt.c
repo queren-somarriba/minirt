@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 17:03:34 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/24 19:32:53 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/25 13:41:45 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int	check_args(int argc, char **argv)
 {
 	int	fd;
 
-	if (WIN_HEIGHT <= 0 || WIN_WIDTH <= 0)
+	if (WIN_HEIGHT <= 0 || WIN_HEIGHT > 1080
+		|| WIN_WIDTH <= 0 || WIN_WIDTH > 1920)
 		return (printerr(WINDOW_ERROR), EXIT_FAILURE);
 	if (argc != 2 || !ft_str_equal(argv[1] + ft_strlen(argv[1]) - 3, ".rt"))
 		return (printerr(FILE_ERROR), EXIT_FAILURE);
@@ -34,7 +35,8 @@ int	init_minirt(t_minirt *data)
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 		return (free_minirt(data), printerr(MLX_INIT), EXIT_FAILURE);
-	data->win_ptr = mlx_new_window(data->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "miniRT");
+	data->win_ptr = mlx_new_window(data->mlx_ptr,
+			WIN_WIDTH, WIN_HEIGHT, "miniRT");
 	if (!data->win_ptr)
 		return (free_minirt(data), printerr(MLX_WIN), EXIT_FAILURE);
 	data->img.mlx_img = NULL;

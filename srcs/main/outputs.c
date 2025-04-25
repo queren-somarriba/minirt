@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:52:15 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/24 19:36:38 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/25 14:15:19 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	print_welcome_message(void)
 {
 	printf("\n                       🌟 Welcome to miniRT 🌟\n");
 	printf("\n");
-	printf(" ➤ Press N to move to the next object\n");
-	printf(" ➤ Press P to move to the previous object\n");
+	printf(" ➤ Press N to select the next object\n");
+	printf(" ➤ Press P to select the previous object\n");
 	printf("\n");
 	printf(" ➤ Press Up/Down to resize the current object size\n");
 	printf(" ➤ Press Right/Left to resize the cylinders height\n");
@@ -39,6 +39,17 @@ void	printerr2(char *str1, char *str2)
 {
 	printerr(str1);
 	printerr(str2);
+}
+
+void	printerr_line(int count, char *str)
+{
+	char	*line;
+
+	line = ft_itoa(count);
+	printerr("Error\n");
+	printerr2("line ", line);
+	printerr(str);
+	free(line);
 }
 
 int	print_object(t_objects *node)

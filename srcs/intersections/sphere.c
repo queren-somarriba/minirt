@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 18:41:52 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/10 18:55:30 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/25 17:36:42 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ float	quad(float a, float b, float c)
 	float	y;
 
 	delta = b * b - 4.0 * a * c;
-	if (delta < 0 || fabsf(a) < 1e-6)
+	if (delta < 0.0 || fabsf(a) < 1e-6)
 		return (-1);
 	x = (-b - sqrtf(delta)) / (2.0 * a);
 	y = (-b + sqrtf(delta)) / (2.0 * a);
-	if (x < 0 && y < 0)
+	if (x < 0.0 && y < 0.0)
 		return (-1);
 	if (x > 0.0 && y > 0.0)
 		return (fminf(x, y));

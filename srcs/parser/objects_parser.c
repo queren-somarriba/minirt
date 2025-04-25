@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:52:44 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/23 18:10:11 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/25 15:06:50 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,84 +39,85 @@ int	add_node_object(t_minirt *data, void *obj, t_obj_id id)
 	return (EXIT_SUCCESS);
 }
 
-int	pars_sphere(t_minirt *data, char **arr)
+int	pars_sphere(t_minirt *data, char **arr, int count)
 {
 	t_sphere	*sp;
 
 	if (arr_size(arr) != 4 || check_nptr(arr))
-		return (printerr(SP_FORMAT), EXIT_FAILURE);
+		return (printerr_line(count, SP_FORMAT), EXIT_FAILURE);
 	sp = ft_calloc(1, sizeof(t_sphere));
 	if (!sp)
 		return (perror("malloc"), EXIT_FAILURE);
 	sp->diam = ft_atof(arr[2]);
 	if (sp->diam <= 0)
-		return (free(sp), printerr2(DIAM_ERROR, "sphere\n"), EXIT_FAILURE);
-	sp->center = get_point(arr[1]);
+		return (free(sp), printerr_line(count, DIAM_ERROR), EXIT_FAILURE);
+	sp->center = get_point(arr[1], count);
 	if (!sp->center)
-		return (free(sp), printerr("sphere\n"), EXIT_FAILURE);
-	sp->color = get_color(arr[3]);
+		return (free(sp), EXIT_FAILURE);
+	sp->color = get_color(arr[3], count);
 	if (!sp->color)
-		return (free_sphere(sp), printerr("sphere\n"), 1);
+		return (free_sphere(sp), EXIT_FAILURE);
 	if (add_node_object(data, sp, SPHERE))
 		return (free_sphere(sp), EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
-int	pars_plane(t_minirt *data, char **arr)
+int	pars_plane(t_minirt *data, char **arr, int count)
 {
 	t_plane	*pl;
 
 	if (arr_size(arr) != 4 || check_nptr(arr))
-		return (printerr(PL_FORMAT), EXIT_FAILURE);
+		return (printerr_line(count, PL_FORMAT), EXIT_FAILURE);
 	pl = ft_calloc(1, sizeof(t_plane));
 	if (!pl)
 		return (perror("malloc"), EXIT_FAILURE);
-	pl->point = get_point(arr[1]);
+	pl->point = get_point(arr[1], count);
 	if (!pl->point)
-		return (free(pl), printerr("plane\n"), EXIT_FAILURE);
-	pl->axis = get_vector(arr[2]);
+		return (free(pl), EXIT_FAILURE);
+	pl->axis = get_vector(arr[2], count);
 	if (!pl->axis)
-		return (free_plane(pl), printerr("plane\n"), EXIT_FAILURE);
-	pl->color = get_color(arr[3]);
+		return (free_plane(pl), EXIT_FAILURE);
+	pl->color = get_color(arr[3], count);
 	if (!pl->color)
-		return (free_plane(pl), printerr("plane\n"), 1);
+		return (free_plane(pl), EXIT_FAILURE);
 	if (add_node_object(data, pl, PLANE))
 		return (free_plane(pl), EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
-static int	pars_cylinder2(t_minirt *data, char **arr, t_cylinder *cy)
+static int	pars_cylinder2(t_minirt *data, char **arr,
+			t_cylinder *cy, int count)
 {
-	cy->color = get_color(arr[5]);
+	cy->color = get_color(arr[5], count);
 	if (!cy->color)
-		return (free_cylinder(cy), printerr("cylinder\n"), EXIT_FAILURE);
+		return (free_cylinder(cy), EXIT_FAILURE);
 	if (add_node_object(data, cy, CYLINDER))
 		return (free_cylinder(cy), EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
-int	pars_cylindre(t_minirt *data, char **arr)
+int	pars_cylindre(t_minirt *data, char **arr, int count)
 {
 	t_cylinder	*cy;
 
 	if (arr_size(arr) != 6 || check_nptr(arr))
-		return (printerr(CY_FORMAT), EXIT_FAILURE);
+		return (printerr_line(count, CY_FORMAT), EXIT_FAILURE);
 	cy = ft_calloc(1, sizeof(t_cylinder));
 	if (!cy)
 		return (perror("malloc"), EXIT_FAILURE);
 	cy->diam = ft_atof(arr[3]);
 	if (cy->diam < 0.0)
-		return (free(cy), printerr2(DIAM_ERROR, "cylinder\n"), 1);
+		return (free(cy), printerr_line(count, DIAM_ERROR), EXIT_FAILURE);
 	cy->height = ft_atof(arr[4]);
 	if (cy->height < 0.0)
-		return (free(cy), printerr(HEIGHT_ERROR), 1);
-	cy->center = get_point(arr[1]);
+		return (free(cy), printerr_line(count, HEIGHT_ERROR), EXIT_FAILURE);
+	cy->center = get_point(arr[1], count);
 	if (!cy->center)
-		return (free_cylinder(cy), printerr("cylinder\n"), EXIT_FAILURE);
-	cy->axis = get_vector(arr[2]);
+		return (free_cylinder(cy), EXIT_FAILURE);
+	cy->axis = get_vector(arr[2], count);
 	if (!cy->axis)
-		return (free_cylinder(cy), printerr("cylinder\n"), EXIT_FAILURE);
-	if (pars_cylinder2(data, arr, cy))
+		return (free_cylinder(cy), EXIT_FAILURE);
+	if (pars_cylinder2(data, arr, cy, count))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

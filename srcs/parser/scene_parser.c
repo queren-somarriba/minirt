@@ -12,42 +12,42 @@
 
 #include "minirt.h"
 
-int	pars_ambient_light(t_minirt *data, char **arr)
+int	pars_ambient_light(t_minirt *data, char **arr, int count)
 {
 	t_amb_light	*amb;
 
 	if (arr_size(arr) != 3 || check_nptr(arr))
-		return (printerr(AMB_FORMAT), EXIT_FAILURE);
+		return (printerr_line(count, AMB_FORMAT), EXIT_FAILURE);
 	amb = ft_calloc(1, sizeof(t_amb_light));
 	if (!amb)
 		return (perror("malloc"), EXIT_FAILURE);
 	amb->ratio = ft_atof(arr[1]);
 	if (amb->ratio < 0.0 || amb->ratio > 1.0)
-		return (free(amb), printerr(AMB_RATIO), EXIT_FAILURE);
-	amb->color = get_color(arr[2]);
+		return (free(amb), printerr_line(count, AMB_RATIO), EXIT_FAILURE);
+	amb->color = get_color(arr[2], count);
 	if (!amb->color)
-		return (free(amb), printerr("ambient light\n"), EXIT_FAILURE);
+		return (free(amb), EXIT_FAILURE);
 	data->amb = amb;
 	if (add_node_object(data, amb, AMB))
 		return (free_amb(amb), EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
-int	pars_camera(t_minirt *data, char **arr)
+int	pars_camera(t_minirt *data, char **arr, int count)
 {
 	t_cam	*cam;
 
 	if (arr_size(arr) != 4 || check_nptr(arr))
-		return (printerr(CAM_FORMAT), EXIT_FAILURE);
+		return (printerr_line(count, CAM_FORMAT), EXIT_FAILURE);
 	cam = ft_calloc(1, sizeof(t_cam));
 	if (!cam)
 		return (perror("malloc"), EXIT_FAILURE);
-	cam->p = get_point(arr[1]);
+	cam->p = get_point(arr[1], count);
 	if (!cam->p)
-		return (free(cam), printerr("camera\n"), EXIT_FAILURE);
-	cam->v = get_vector(arr[2]);
+		return (free(cam), EXIT_FAILURE);
+	cam->v = get_vector(arr[2], count);
 	if (!cam->v)
-		return (free(cam->p), free(cam), printerr("camera\n"), 1);
+		return (free(cam->p), free(cam), 1);
 	cam->fov = ft_atoi(arr[3]);
 	if (cam->fov < 0 || cam->fov > 180)
 		return (free(cam->p), free(cam->v), free(cam), printerr(FOV_ERROR), 1);
@@ -57,21 +57,22 @@ int	pars_camera(t_minirt *data, char **arr)
 	return (EXIT_SUCCESS);
 }
 
-int	pars_light(t_minirt *data, char **arr)
+int	pars_light(t_minirt *data, char **arr, int count)
 {
 	t_light	*light;
 
 	if (arr_size(arr) != 3 || check_nptr(arr))
-		return (printerr(LIGHT_FORMAT), EXIT_FAILURE);
+		return (printerr_line(count, LIGHT_FORMAT), EXIT_FAILURE);
 	light = ft_calloc(1, sizeof(t_light));
 	if (!light)
 		return (perror("malloc"), EXIT_FAILURE);
-	light->p = get_point(arr[1]);
+	light->p = get_point(arr[1], count);
 	if (!light->p)
-		return (free(light), printerr("light\n"), EXIT_FAILURE);
+		return (free(light), EXIT_FAILURE);
 	light->brightness = ft_atof(arr[2]);
 	if (light->brightness < 0.0 || light->brightness > 1.0)
-		return (free(light->p), free(light), printerr(BRIGHT_RATIO), 1);
+		return (free(light->p), free(light),
+			printerr_line(count, BRIGHT_RATIO), EXIT_FAILURE);
 	data->light = light;
 	if (add_node_object(data, light, LIGHT))
 		return (free_light(light), EXIT_FAILURE);

@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 18:55:51 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/24 15:11:43 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/25 16:32:30 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	rotate_around(t_vector *v, t_vector axis, float angle)
 		+ k.z * dot * (1 - cosf(angle));
 }
 
-static void	make_rotation(t_minirt *data, t_vector *v, int keysym)
+static void	compute_rotation(t_minirt *data, t_vector *v, int keysym)
 {
 	if (keysym == XK_1)
 		rotate_around(v, data->cam->right, -M_PI / 36.0);
@@ -43,6 +43,7 @@ static void	make_rotation(t_minirt *data, t_vector *v, int keysym)
 		rotate_around(v, data->cam->forw, -M_PI / 36.0);
 	else if (keysym == XK_6)
 		rotate_around(v, data->cam->forw, M_PI / 36.0);
+	ray_tracer(data);
 }
 
 int	rotation(t_minirt *data, int keysysm)
@@ -55,11 +56,11 @@ int	rotation(t_minirt *data, int keysysm)
 	if (!node)
 		return (EXIT_SUCCESS);
 	if (node->type == CAM)
-		make_rotation(data, data->cam->v, keysysm);
+		compute_rotation(data, data->cam->v, keysysm);
 	else if (node->type == PLANE)
-		make_rotation(data, ((t_plane *)(node->obj))->axis, keysysm);
+		compute_rotation(data, ((t_plane *)(node->obj))->axis, keysysm);
 	else if (node->type == CYLINDER)
-		make_rotation(data, ((t_cylinder *)(node->obj))->axis, keysysm);
+		compute_rotation(data, ((t_cylinder *)(node->obj))->axis, keysysm);
 	else if (printf("No rotation possible on current object!\n") < 0)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);

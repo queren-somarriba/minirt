@@ -18,4 +18,6 @@ Le but est d’implémenter un moteur de rendu simple en utilisant la technique 
 - Ombres portées (ombres simples)
 - Affichage via la miniLibX
 - Modification du diametre pour une sphere et diametre et hauteure pour un cylindre.
-- Translation et rotation d'une lumiere ponctuelle, de la camera, des spheres, des plans et des cylindres.
+- Translation et rotation d'une lumiere ponctuelle, de la camera, des spheres, des plans et des cylindres.!
+
+[alt text](<Screenshot from 2025-04-25 16-34-05.png>)

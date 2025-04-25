@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:54:06 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/24 19:29:12 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/25 13:56:02 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void		printerr(char *str);
 void		printerr2(char *str1, char *str2);
 
 void		print_welcome_message(void);
+
+void		printerr_line(int count, char *str);
 
 /*VECTOR_UTILS*/
 float		vect_length(t_vector v);

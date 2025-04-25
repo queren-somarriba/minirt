@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 17:14:42 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/10 18:47:33 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/25 17:30:18 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,22 +43,22 @@ t_inter	*closest_inter(t_minirt *data, t_ray ray)
 {
 	t_inter	*closest;
 	t_inter	*inter;
-	t_list	*current;
+	t_list	*node;
 
-	current = *data->objects;
+	node = *data->objects;
 	inter = NULL;
 	closest = malloc(sizeof(t_inter));
 	if (!closest)
 		return (perror("malloc"), NULL);
 	closest->dist = INFINITY;
-	while (current)
+	while (node)
 	{
-		inter = find_inter(current, ray);
+		inter = find_inter(node, ray);
 		if (inter && inter->dist < closest->dist)
 			closest = free_and_assign(closest, inter);
 		else
 			inter = free_and_assign(inter, NULL);
-		current = current->next;
+		node = node->next;
 	}
 	if (closest && closest->dist && closest->dist == INFINITY)
 		return (free(closest), NULL);
@@ -69,25 +69,25 @@ t_inter	*closest_inter_shadow(t_minirt *data, t_ray ray, int index)
 {
 	t_inter	*closest;
 	t_inter	*inter;
-	t_list	*current;
+	t_list	*node;
 
-	current = *data->objects;
+	node = *data->objects;
 	inter = NULL;
 	closest = malloc(sizeof(t_inter));
 	if (!closest)
 		return (perror("malloc"), NULL);
 	closest->dist = INFINITY;
-	while (current)
+	while (node)
 	{
-		if (((t_objects *)current->content)->index != index)
+		if (((t_objects *)node->content)->index != index)
 		{
-			inter = find_inter(current, ray);
+			inter = find_inter(node, ray);
 			if (inter && inter->dist < closest->dist)
 				closest = free_and_assign(closest, inter);
 			else
 				inter = free_and_assign(inter, NULL);
 		}
-		current = current->next;
+		node = node->next;
 	}
 	if (closest && closest->dist && closest->dist == INFINITY)
 		return (free(closest), NULL);
