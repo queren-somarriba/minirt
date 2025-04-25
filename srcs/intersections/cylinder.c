@@ -6,7 +6,7 @@
 /*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 18:42:30 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/25 17:56:13 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/04/25 18:27:39 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static t_vector	cylinder_normal(t_cylinder *cy, t_vector v)
 
 	x = dot_product(v, *cy->axis);
 	normal = sub_vector(v, vector_scale(*cy->axis, x));
-	length = sqrt(dot_product(normal, normal));
+	length = sqrtf(dot_product(normal, normal));
 	normal = vector_scale(normal, 1 / length);
 	return (normal);
 }
