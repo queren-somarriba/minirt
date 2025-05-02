@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+         #
+#    By: jpiech <jpiech@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/06 15:01:28 by qsomarri          #+#    #+#              #
-#    Updated: 2025/04/24 19:21:42 by qsomarri         ###   ########.fr        #
+#    Updated: 2025/05/02 13:51:04 by jpiech           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = miniRT
 
 CC = @cc
 
-CFLAGS = -Wall -Wextra -Werror -g -I./includes
+CFLAGS = -Wall -Wextra -Werror -g3 -I./includes
 
 RM = @rm -rf
 
@@ -68,6 +68,10 @@ LIBFT_PATH = ./libft
 
 LIBFT = $(LIBFT_PATH)/libft.a
 
+MLX_PATH = ./mlx_linux
+
+MLX = $(MLX_PATH)/libmlx.a
+
 # Compilation des fichiers objets
 $(OBJ_DIR)/%.o: $(SRCS_DIR)/%.c
 	@mkdir -p $(dir $@)
@@ -82,13 +86,17 @@ $(OBJ_DI)/%.o: $(BONUS_SRCS_DIR)/%.c | $(OBJ_DIR)
 all: $(NAME)
 
 # Création de l'exécutable
-$(NAME): $(LIBFT) $(OBJS)
+$(NAME): $(MLX) $(LIBFT) $(OBJS)
 	@$(CC) -o $(NAME) $(CFLAGS) $(OBJS) -L$(LIBFT_PATH) -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 		@echo "\033[0;92m * $(NAME) program file was created\033[0m *"
 
 # Construction de la libft
 $(LIBFT):
 	@$(MAKE) $(LIBFT_PATH) all
+	
+# Construction de la minilibx
+$(MLX) :
+	@$(MAKE) $(MLX_PATH) all
 
 # Création du répertoire des objets
 $(OBJ_DIR):
@@ -96,13 +104,13 @@ $(OBJ_DIR):
 
 # Nettoyage des fichiers objets
 clean:
-	@$(MAKE) $(LIBFT_PATH) clean
+	@$(MAKE) $(LIBFT_PATH) fclean
+	@$(MAKE) $(MLX_PATH) clean
 	@$(RM) $(OBJ_DIR)
 	@echo "\033[0;91m* $(NAME) object files was deleted *\033[0m"
 
 # Nettoyage complet
 fclean: clean
-	@$(MAKE) $(LIBFT_PATH) fclean
 	@$(RM) $(NAME)
 	@echo "\033[0;91m* $(NAME) was deleted *\033[0m"
 
