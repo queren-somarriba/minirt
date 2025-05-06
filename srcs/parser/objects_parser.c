@@ -6,7 +6,7 @@
 /*   By: jpiech <jpiech@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:52:44 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/05/06 11:32:12 by jpiech           ###   ########.fr       */
+/*   Updated: 2025/05/06 11:43:16 by jpiech           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,10 @@ int	pars_cylindre(t_minirt *data, char **arr, int count)
 	if (!cy)
 		return (perror("malloc"), EXIT_FAILURE);
 	cy->diam = ft_atof(arr[3]);
-	if (cy->diam < 0.0)
+	if (cy->diam < 0.0f)
 		return (free(cy), printerr_line(count, DIAM_ERROR), EXIT_FAILURE);
 	cy->height = ft_atof(arr[4]);
-	if (cy->height < 0.0)
+	if (cy->height < 0.0f)
 		return (free(cy), printerr_line(count, HEIGHT_ERROR), EXIT_FAILURE);
 	cy->center = get_point(arr[1], count);
 	if (!cy->center)
