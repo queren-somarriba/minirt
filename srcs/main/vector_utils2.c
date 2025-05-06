@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_utils2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jpiech <jpiech@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 16:19:32 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/07 15:17:05 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/05/06 11:39:09 by jpiech           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_vector	normalize_vect(t_vector v)
 	float	a;
 
 	a = vect_length(v);
-	if (fabsf(a) < 1e-6)
+	if (fabsf(a) < 1e-6f)
 		return ((t_vector){0, 0, 0});
 	return ((t_vector){v.x / a, v.y / a, v.z / a});
 }
