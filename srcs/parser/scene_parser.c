@@ -50,7 +50,11 @@ int	pars_camera(t_minirt *data, char **arr, int count)
 		return (free(cam->p), free(cam), 1);
 	cam->fov = ft_atoi(arr[3]);
 	if (cam->fov < 0 || cam->fov > 180)
-		return (free(cam->p), free(cam->v), free(cam), printerr(FOV_ERROR), 1);
+		return (free(cam->p), free(cam->v), free(cam), printerr_line(count, FOV_ERROR), 1);
+	if (cam->fov == 0) 
+		return (free(cam->p), free(cam->v), free(cam), printerr_line(count, MIN_FOV_ERROR), 1);
+	if (cam->fov == 180) 
+		return (free(cam->p), free(cam->v), free(cam), printerr_line(count, MAX_FOV_ERROR), 1);
 	data->cam = cam;
 	if (add_node_object(data, cam, CAM))
 		return (free_cam(cam), EXIT_FAILURE);

@@ -6,7 +6,7 @@
 /*   By: jpiech <jpiech@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:35:30 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/05/06 11:21:34 by jpiech           ###   ########.fr       */
+/*   Updated: 2025/05/06 11:56:45 by jpiech           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@
 # define VECT_FORMAT " : Invalid vector format\n"
 # define VECT_RANGE " : Invalid vector range\n"
 # define FOV_ERROR " : Invalid field of view angle\n"
+# define MIN_FOV_ERROR " : Field of view too small to display anything\n"
+# define MAX_FOV_ERROR " : Field of view too wide for display to be coherent\n"
 # define LIGHT_FORMAT " : Invalid light format\n"
 # define BRIGHT_RATIO " : Invalid light brightness ratio\n"
 # define SP_FORMAT " : Invalid sphere format\n"
