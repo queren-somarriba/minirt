@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects_parser.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jpiech <jpiech@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:52:44 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/25 15:06:50 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/05/06 11:32:12 by jpiech           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,13 @@ int	add_node_object(t_minirt *data, void *obj, t_obj_id id)
 {
 	t_list		*new;
 	t_objects	*obj_node;
-	t_list		*tmp;
-	int			index;
 
-	index = 0;
-	tmp = *data->objects;
-	while (tmp)
-	{
-		index++;
-		tmp = tmp->next;
-	}
 	obj_node = malloc(sizeof(t_objects));
 	if (!obj_node)
 		return (perror("malloc"), EXIT_FAILURE);
 	obj_node->obj = obj;
 	obj_node->type = id;
-	obj_node->index = index;
+	obj_node->index = ft_lstsize(*data->objects);
 	new = ft_lstnew(obj_node);
 	if (!new)
 		return (perror("malloc"), EXIT_FAILURE);
