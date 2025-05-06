@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jpiech <jpiech@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 17:03:34 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/25 13:41:45 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/05/06 10:54:12 by jpiech           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,14 @@ int	init_minirt(t_minirt *data)
 			WIN_WIDTH, WIN_HEIGHT, "miniRT");
 	if (!data->win_ptr)
 		return (free_minirt(data), printerr(MLX_WIN), EXIT_FAILURE);
-	data->img.mlx_img = NULL;
-	data->amb = NULL;
-	data->cam = NULL;
-	data->light = NULL;
-	data->current_obj = 0;
 	return (EXIT_SUCCESS);
 }
 
 int	main(int argc, char **argv)
 {
 	t_minirt	data;
-
+	
+	ft_bzero(&data, sizeof(t_minirt));
 	if (check_args(argc, argv))
 		return (EXIT_FAILURE);
 	if (init_minirt(&data))
