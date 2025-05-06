@@ -6,7 +6,7 @@
 /*   By: jpiech <jpiech@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 17:03:34 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/05/06 10:54:12 by jpiech           ###   ########.fr       */
+/*   Updated: 2025/05/06 11:21:45 by jpiech           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ int	check_args(int argc, char **argv)
 		return (printerr(WINDOW_ERROR), EXIT_FAILURE);
 	if (argc != 2 || !ft_str_equal(argv[1] + ft_strlen(argv[1]) - 3, ".rt"))
 		return (printerr(FILE_ERROR), EXIT_FAILURE);
+	fd = open(argv[1], __O_DIRECTORY);
+	if (fd != -1)
+		return (printerr("Error\n"), printerr2(argv[1], OPEN_DIR), 1);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 		return (printerr("Error\n"), printerr2(argv[1], OPEN_ERROR), 1);

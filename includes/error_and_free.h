@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_and_free.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jpiech <jpiech@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:35:30 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/25 15:53:30 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/05/06 11:21:34 by jpiech           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define WINDOW_ERROR "Error\nInvalid window size\n"
 # define FILE_ERROR "Error\nminiRT argument must be a .rt file\n"
 # define OPEN_ERROR " : miniRt cannot open this file\n"
+# define OPEN_DIR " : miniRt scene cannot be a directory, must be a file\n"
 # define SCENE_ERROR " : Invalid scene\n"
 # define AMB_ERROR "Error\nScene must have one unique ambient light\n"
 # define CAM_ERROR "Error\nScene must have one unique camera\n"
