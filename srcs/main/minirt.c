@@ -6,7 +6,7 @@
 /*   By: jpiech <jpiech@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 17:03:34 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/05/06 11:21:45 by jpiech           ###   ########.fr       */
+/*   Updated: 2025/05/07 12:27:59 by jpiech           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 int	check_args(int argc, char **argv)
 {
 	int	fd;
-
-	if (WIN_HEIGHT <= 0 || WIN_HEIGHT > 1080
-		|| WIN_WIDTH <= 0 || WIN_WIDTH > 1920)
-		return (printerr(WINDOW_ERROR), EXIT_FAILURE);
+	
 	if (argc != 2 || !ft_str_equal(argv[1] + ft_strlen(argv[1]) - 3, ".rt"))
 		return (printerr(FILE_ERROR), EXIT_FAILURE);
 	fd = open(argv[1], __O_DIRECTORY);
@@ -32,16 +29,23 @@ int	check_args(int argc, char **argv)
 
 int	init_minirt(t_minirt *data)
 {
+	int	pixel_width;
+	int	pixel_height;
+	
 	data->objects = ft_calloc(1, sizeof(t_list *));
 	if (!data->objects)
 		return (perror("malloc"), EXIT_FAILURE);
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
-		return (free_minirt(data), printerr(MLX_INIT), EXIT_FAILURE);
+		return (printerr(MLX_INIT), free_minirt(data), EXIT_FAILURE);
+	mlx_get_screen_size(data->mlx_ptr, &pixel_width, &pixel_height);
+	if (WIN_HEIGHT <= 0 || WIN_HEIGHT > pixel_height
+		|| WIN_WIDTH <= 0 || WIN_WIDTH > pixel_width)
+		return (printerr(WINDOW_ERROR), free_minirt(data), EXIT_FAILURE);
 	data->win_ptr = mlx_new_window(data->mlx_ptr,
 			WIN_WIDTH, WIN_HEIGHT, "miniRT");
 	if (!data->win_ptr)
-		return (free_minirt(data), printerr(MLX_WIN), EXIT_FAILURE);
+		return (printerr(MLX_WIN), free_minirt(data), EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
