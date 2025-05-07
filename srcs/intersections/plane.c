@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jpiech <jpiech@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 18:42:07 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/25 19:23:02 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/05/07 11:52:24 by jpiech           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ t_inter	*inter_plane(t_plane *pl, t_ray ray)
 	inter->c = *pl->color;
 	inter->dist = t;
 	inter->normal = normalize_vect(*pl->axis);
-	inter->p = add_vector(inter->p, vector_scale(inter->normal, (float)1e-4));
 	if (dot_product(inter->normal, ray.v) > 0)
 		inter->normal = vector_scale(inter->normal, -1);
 	return (inter);
