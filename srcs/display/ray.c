@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jpiech <jpiech@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 16:17:38 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/25 19:25:33 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/05/26 17:45:29 by jpiech           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,8 @@ void	ray_tracer(t_minirt *data)
 			ray.v = make_vect_dir(data, x, y);
 			inter = closest_inter(data, ray);
 			if (inter)
-				inter->c = final_color(data, inter);
-			if (inter)
 			{
+				inter->c = final_color(data, inter);
 				img_pix_put(data->img, x, y, encode_rgb(inter->c));
 				free(inter);
 			}
