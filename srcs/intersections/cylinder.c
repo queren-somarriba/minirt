@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jpiech <jpiech@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 18:42:30 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/25 19:24:14 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/05/27 17:36:07 by jpiech           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static int	valid_inter(t_cylinder *cy, t_ray ray, float t, float h)
 	t_vector	d;
 	float		dist;
 
+	if (t < 0.0f)
+		return(EXIT_FAILURE);
 	inter_point = add_vector(ray.p, vector_scale(ray.v, t));
 	d = sub_vector(inter_point, *cy->center);
 	dist = dot_product(d, *cy->axis);
