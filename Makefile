@@ -6,7 +6,7 @@
 #    By: jpiech <jpiech@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/06 15:01:28 by qsomarri          #+#    #+#              #
-#    Updated: 2025/05/02 13:51:04 by jpiech           ###   ########.fr        #
+#    Updated: 2025/05/27 14:16:02 by jpiech           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,6 +116,9 @@ fclean: clean
 
 # Reconstruction complète
 re: fclean all
+
+test :
+	valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes ./$(NAME) scenes/1.rt
 
 .PHONY: all clean fclean re
 
