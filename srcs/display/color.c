@@ -6,7 +6,7 @@
 /*   By: jpiech <jpiech@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 13:13:14 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/05/26 18:10:40 by jpiech           ###   ########.fr       */
+/*   Updated: 2025/05/27 14:48:53 by jpiech           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,6 @@ t_color	final_color(t_minirt *data, t_inter *inter)
 		data->light->p->y - inter->p.y, data->light->p->z - inter->p.z};
 	final = add_color(inter->c, *(data->amb->color), data->amb->ratio);
 	if (!is_in_shadow(data, inter, to_light))
-	 	final = diffuse_reflexion(inter, data->light, final, to_light);
+		final = diffuse_reflexion(inter, data->light, final, to_light);
 	return (clamp_color(final));
 }

@@ -6,7 +6,7 @@
 /*   By: jpiech <jpiech@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 17:03:34 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/05/07 12:27:59 by jpiech           ###   ########.fr       */
+/*   Updated: 2025/05/27 14:49:21 by jpiech           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	check_args(int argc, char **argv)
 {
 	int	fd;
-	
+
 	if (argc != 2 || !ft_str_equal(argv[1] + ft_strlen(argv[1]) - 3, ".rt"))
 		return (printerr(FILE_ERROR), EXIT_FAILURE);
 	fd = open(argv[1], __O_DIRECTORY);
@@ -31,7 +31,7 @@ int	init_minirt(t_minirt *data)
 {
 	int	pixel_width;
 	int	pixel_height;
-	
+
 	data->objects = ft_calloc(1, sizeof(t_list *));
 	if (!data->objects)
 		return (perror("malloc"), EXIT_FAILURE);
@@ -52,7 +52,7 @@ int	init_minirt(t_minirt *data)
 int	main(int argc, char **argv)
 {
 	t_minirt	data;
-	
+
 	ft_bzero(&data, sizeof(t_minirt));
 	if (check_args(argc, argv))
 		return (EXIT_FAILURE);

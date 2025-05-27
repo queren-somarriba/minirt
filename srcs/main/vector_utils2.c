@@ -6,7 +6,7 @@
 /*   By: jpiech <jpiech@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 16:19:32 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/05/06 11:39:09 by jpiech           ###   ########.fr       */
+/*   Updated: 2025/05/27 15:06:08 by jpiech           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_vector	normalize_vect(t_vector v)
 	float	a;
 
 	a = vect_length(v);
-	if (fabsf(a) < 1e-6f)
+	if (fabsf(a) < (float)1e-6)
 		return ((t_vector){0, 0, 0});
 	return ((t_vector){v.x / a, v.y / a, v.z / a});
 }
