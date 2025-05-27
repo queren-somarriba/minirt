@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jpiech <jpiech@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 17:30:16 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/04/25 16:16:44 by qsomarri         ###   ########.fr       */
+/*   Updated: 2025/05/27 15:20:53 by jpiech           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,8 @@ t_objects	*get_node(t_minirt *data, int index)
 void	update_current_obj(t_minirt *data, int mode)
 {
 	int		len;
-	t_list	*node;
 
-	node = ft_lstlast(*(data->objects));
-	len = ((t_objects *)node->content)->index + 1;
+	len = ft_lstsize(*data->objects);
 	if (mode == 0)
 		data->current_obj = (data->current_obj + 1) % len;
 	if (mode == 1)
