@@ -6,7 +6,7 @@
 /*   By: jpiech <jpiech@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 16:37:48 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/05/27 20:34:23 by jpiech           ###   ########.fr       */
+/*   Updated: 2025/05/27 20:35:49 by jpiech           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	handle_escape(int keysysm, void *param)
 int	handle_input(int keysysm, void *param)
 {
 	t_minirt	*data;
-	
+
 	print_keysysm(keysysm);
 	data = (t_minirt *)param;
 	if (keysysm == XK_n || keysysm == XK_p)
