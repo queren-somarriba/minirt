@@ -6,7 +6,7 @@
 /*   By: jpiech <jpiech@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 18:55:51 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/05/27 20:16:40 by jpiech           ###   ########.fr       */
+/*   Updated: 2025/05/28 15:21:41 by jpiech           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,30 @@ static void	rotate_around1(t_vector *v, t_vector axis, float angle)
 			v->z = v->z * cosf(angle) + cross.z * sinf(angle)
 			+ k.z * dot * (1.0f - cosf(angle));
 	}
+	if (v->y * cosf(angle) + cross.y * sinf(angle)
+		+ k.y * dot * (1.0f - cosf(angle)) > 0.9f)
+		printerr("Stop trying to backflip our camera !\n");
+	if (v->y * cosf(angle) + cross.y * sinf(angle)
+		+ k.y * dot * (1.0f - cosf(angle)) < -0.9f)
+		printerr("Stop trying to frontflip our camera !\n");
 }
 
-static void	compute_rotation(t_minirt *data, t_vector *v, int keysym)
+static void	compute_rotation(t_minirt *data, t_vector *v, int keysym, int mode)
 {
 	if (keysym == XK_1)
-		rotate_around1(v, data->cam->right, -M_PI / 36.0f);
+	{
+		if (mode == 1)
+			rotate_around1(v, data->cam->right, -M_PI / 36.0f);
+		else
+			rotate_around(v, data->cam->right, -M_PI / 36.0f);
+	}
 	else if (keysym == XK_2)
-		rotate_around1(v, data->cam->right, M_PI / 36.0f);
+	{
+		if (mode == 1)
+			rotate_around1(v, data->cam->right, M_PI / 36.0f);
+		else
+			rotate_around(v, data->cam->right, M_PI / 36.0f);
+	}
 	else if (keysym == XK_3)
 		rotate_around(v, data->cam->up, -M_PI / 36.0f);
 	else if (keysym == XK_4)
@@ -79,11 +95,11 @@ int	rotation(t_minirt *data, int keysysm)
 	if (!node)
 		return (EXIT_SUCCESS);
 	if (node->type == CAM)
-		compute_rotation(data, data->cam->v, keysysm);
+		compute_rotation(data, data->cam->v, keysysm, 1);
 	else if (node->type == PLANE)
-		compute_rotation(data, ((t_plane *)(node->obj))->axis, keysysm);
+		compute_rotation(data, ((t_plane *)(node->obj))->axis, keysysm, 0);
 	else if (node->type == CYLINDER)
-		compute_rotation(data, ((t_cylinder *)(node->obj))->axis, keysysm);
+		compute_rotation(data, ((t_cylinder *)(node->obj))->axis, keysysm, 0);
 	else if (printf("No rotation possible on current object!\n") < 0)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
