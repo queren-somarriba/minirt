@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_and_free.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpiech <jpiech@student.42.fr>              +#+  +:+       +#+        */
+/*   By: qsomarri <qsomarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:35:30 by qsomarri          #+#    #+#             */
-/*   Updated: 2025/05/06 11:56:45 by jpiech           ###   ########.fr       */
+/*   Updated: 2025/06/02 12:32:59 by qsomarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define ERROR_AND_FREE_H
 
 # define WINDOW_ERROR "Error\nInvalid window size\n"
-# define FILE_ERROR "Error\nminiRT argument must be a .rt file\n"
+# define FILE_ERROR "Error\nminiRT argument must be a unique .rt file\n"
 # define OPEN_ERROR " : miniRt cannot open this file\n"
 # define OPEN_DIR " : miniRt scene cannot be a directory, must be a file\n"
 # define SCENE_ERROR " : Invalid scene\n"
