@@ -14,7 +14,9 @@ NAME = miniRT
 
 CC = @cc
 
-CFLAGS = -Wall -Wextra -Werror -g3 -I./includes
+CFLAGS = -Wall -Wextra -Werror -g3 $(INC)
+
+INC = -I./includes -I$(MLX_PATH) -I/usr/include
 
 RM = @rm -rf
 
@@ -77,26 +79,25 @@ $(OBJ_DIR)/%.o: $(SRCS_DIR)/%.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-	@$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -c $< -o $@
-
-$(OBJ_DI)/%.o: $(BONUS_SRCS_DIR)/%.c | $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -03 -c $< -o $@
-
 # Cible principale
 all: $(NAME)
 
 # Création de l'exécutable
-$(NAME): $(MLX) $(LIBFT) $(OBJS)
-	@$(CC) -o $(NAME) $(CFLAGS) $(OBJS) -L$(LIBFT_PATH) -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
-		@echo "\033[0;92m * $(NAME) program file was created\033[0m *"
+$(NAME):	$(MLX) $(LIBFT) $(OBJS)
+			@$(CC) -o $(NAME) $(CFLAGS) $(OBJS) -L$(LIBFT_PATH) -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+			@echo "\033[0;92m * $(NAME) program file was created\033[0m *"
 
 # Construction de la libft
 $(LIBFT):
 	@$(MAKE) $(LIBFT_PATH) all
 	
 # Construction de la minilibx
-$(MLX) :
-	@$(MAKE) $(MLX_PATH) all
+$(MLX):
+	@if [ ! -f $(MLX_PATH)/Makefile ]; then \
+		echo "\033[0;31mError: MLX submodule is missing. Run: git submodule update --init\033[0m"; \
+		exit 1; \
+	fi
+	@$(MAKE) $(MLX_PATH)
 
 # Création du répertoire des objets
 $(OBJ_DIR):
