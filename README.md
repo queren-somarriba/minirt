@@ -1,10 +1,10 @@
 # miniRT - @42Paris
 ### 📸 Project Overview
-miniRT is a basic Raytracer written in C. It generates 2D images from a 3D scene description by simulating the way light interacts with objects.The project is a deep dive into vector mathematics, coordinate systems, and physics-based rendering. Unlike traditional rasterization, raytracing produces highly realistic results by calculating shadows, reflections, and light refraction.
+miniRT is a basic Raytracer written in C. It generates 2D images from a 3D scene description by simulating the way light interacts with objects. The project is a deep dive into vector mathematics, coordinate systems, and physics-based rendering. Unlike traditional rasterization, raytracing produces highly realistic results by calculating shadows, reflections, and light refraction.
 
 ### 💡 Key Features
 * Shapes: Renders Spheres, Planes, and Cylinders with correct intersection math.
-* Lighting: Implementation Rof Ambient and Diffuse lighting.
+* Lighting: Implementation of Ambient and Diffuse lighting.
 * Shadows: Hard shadows calculated by tracing rays from intersection points to the light source.
 * Coordinate Transformation: Converting 3D coordinates to a 2D viewport with adjustable Camera FOV.
 
@@ -37,8 +37,9 @@ Note: Planes, cameras, and lights are fixed in size. Spheres cannot be rotated a
 # Compilation
 make
 # Execution
-# Provide a scene file with the .rt extension:
 ./miniRT scenes/1.rt
+
+# Provide a scene file with the .rt extension:
 ```
 
 ### 📂 Scene Format (.rt)
@@ -52,6 +53,7 @@ The scene is defined by a text file containing:
 
 ###  📬 Contact
 Login: qsomarri
+
 School: 42 Paris
 
 ![Screenshot from 2025-04-25 16-34-05](https://github.com/user-attachments/assets/92a7eeba-3021-4a2c-8614-1125b329f84f)
