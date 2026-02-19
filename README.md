@@ -25,6 +25,7 @@ Once the scene is rendered, use the following keys to manipulate objects:
 | | `3` / `4` | Rotate on **Y** axis |
 | | `5` / `6` | Rotate on **Z** axis |
 | **System** | `ESC` | Exit the program |
+
 Note: Planes, cameras, and lights are fixed in size. Spheres cannot be rotated as they are symmetrical from all angles.
 
 ### 🛠️ Technical Implementation
@@ -36,10 +37,9 @@ Note: Planes, cameras, and lights are fixed in size. Spheres cannot be rotated a
 ```Bash
 # Compilation
 make
-# Execution
-./miniRT scenes/1.rt
 
-# Provide a scene file with the .rt extension:
+# Execution
+./miniRT scenes/1.rt # Provide a scene file with the .rt extension:
 ```
 
 ### 📂 Scene Format (.rt)
